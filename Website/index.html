@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DebtFreeIn | Autonomous Trading & Virtual Execution Platform</title>
+  <meta name="description" content="DebtFreeIn is a state-of-the-art algorithmic trading and cognitive paper trading platform with Upstox V3 integration, real-time telemetry, and automated risk controls.">
+  <meta name="keywords" content="DebtFreeIn, Algorithmic Trading, Upstox OAuth, Virtual Ledger, Paper Trading, Quantitative Finance, ATR Risk Controls">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="../ic_phone_logo.png">
+</head>
+<body>
+  <div class="bg-grid-pattern"></div>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-logo">
+        <img src="../ic_phone_logo.png" alt="DebtFreeIn Logo">
+        <span>DebtFreeIn</span>
+        <span class="brand-badge app-version-tag">v1.1.3</span>
+      </a>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#features" class="nav-link">Platform Features</a></li>
+        <li><a href="#telemetry" class="nav-link">Live Telemetry</a></li>
+        <li><a href="#architecture" class="nav-link">Security & Specs</a></li>
+        <li><a href="privacy.html" class="nav-link">Privacy Policy</a></li>
+        <li><a href="terms.html" class="nav-link">Terms of Use</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#download" class="btn btn-primary">Get Beta Access</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-pill">
+          <span class="pulse-dot"></span>
+          <span>Official Upstox OAuth V3 Integration Certified</span>
+        </div>
+
+        <h1 class="hero-title">
+          Autonomous Trading & <br>
+          <span class="text-gradient">Virtual Execution Platform</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          DebtFreeIn combines cognitive paper trading, dynamic ATR risk guardrails, dual-device failover handoff, and direct Upstox V3 execution into a unified Android architecture.
+        </p>
+
+        <div class="hero-cta-group" id="download">
+          <a href="#" class="btn btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+            Download Beta APK (v1.1.3)
+          </a>
+          <a href="#" class="btn btn-secondary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.55.45-1 1-1h16c.55 0 1 .45 1 1v17l-9-4-9 4z"/></svg>
+            Google Play Internal Testing
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <svg width="16" height="16" fill="var(--accent-emerald)" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            <span>Target SDK 35 Compliant</span>
+          </div>
+          <div class="hero-meta-item">
+            <svg width="16" height="16" fill="var(--accent-cyan)" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+            <span>AES-256 Encrypted Key Vault</span>
+          </div>
+          <div class="hero-meta-item">
+            <svg width="16" height="16" fill="var(--accent-indigo)" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+            <span>Zero Data Monetization</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Grid Section -->
+    <section class="features-section" id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">ENGINE ARCHITECTURE</span>
+          <h2 class="section-title">Built for Quantitative Precision & High Availability</h2>
+          <p class="section-desc">Designed with enterprise-grade financial guardrails to eliminate emotional execution errors and enforce disciplined risk management.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Real-time Telemetry Dashboard</h3>
+            <p>Live session monitoring tracking daily PnL, open position exposure, round-trip caps, and dynamic active tripwires streamed directly to Firestore.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Dynamic ATR Risk Controls</h3>
+            <p>Automated volatility protection with 20% max tradeable capital drawdown kill-switches and automated position square-off protocols.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h3>Dual-Device Failover Guard</h3>
+            <p>Cross-phone high-availability observation node. Missed heartbeats trigger automated takeover prompts to ensure zero execution downtime.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔐</div>
+            <h3>Secure Cloud Key Vault</h3>
+            <p>End-to-end encrypted storage of Upstox API credentials using Android Keystore MasterKeys and EncryptedSharedPreferences.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🧪</div>
+            <h3>Cognitive Paper Trading</h3>
+            <p>Simulate intraday trades against realistic virtual ledgers with 0.05% slippage penalties and detailed Gemini AI post-mortem reports.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔄</div>
+            <h3>Robust OAuth 302 Interceptor</h3>
+            <p>Custom WebView client with immediate 302 redirect hijacking to seamlessly capture authorization tokens without spawning external popups.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Telemetry Section -->
+    <section class="telemetry-section" id="telemetry">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">LIVE ENGINE SIMULATION</span>
+          <h2 class="section-title">Real-Time Telemetry Monitor</h2>
+          <p class="section-desc">Interactive preview of the DebtFreeIn execution engine state and background event logs.</p>
+        </div>
+
+        <div class="telemetry-wrapper">
+          <div class="telemetry-header">
+            <div class="terminal-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <div class="telemetry-title">engine_telemetry_node_01.kt • System Active</div>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-emerald);">● LIVE FEED</div>
+          </div>
+
+          <div class="telemetry-body">
+            <div class="telemetry-metrics-grid">
+              <div class="metric-box">
+                <div class="metric-label">Live Session PnL</div>
+                <div class="metric-val" id="telemetryPnl">+₹1,250.00</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Execution Guard State</div>
+                <div class="metric-val neutral">ACTIVE</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Daily Round-Trips</div>
+                <div class="metric-val indigo">2 / 5 Max</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Active Tripwire</div>
+                <div class="metric-val neutral" style="font-size: 1.1rem; line-height: 1.4;">ATR(14) Nominal</div>
+              </div>
+            </div>
+
+            <div class="telemetry-console" id="telemetryConsole">
+              <div class="console-line"><span class="ts">[21:33:02]</span> <span class="tag">[SYSTEM]</span> Upstox OAuth V3 Session Validated. Token Active.</div>
+              <div class="console-line"><span class="ts">[21:33:00]</span> <span class="tag">[RISK_GUARD]</span> Capital Allocation Limit: ₹100,000. Target PnL: ₹5,000.</div>
+              <div class="console-line"><span class="ts">[21:32:45]</span> <span class="tag">[TELEMETRY]</span> Executed BUY RELIANCE x10 @ ₹2400.00 (Slippage: 0.05%)</div>
+              <div class="console-line"><span class="ts">[21:32:10]</span> <span class="tag">[HEARTBEAT]</span> Cross-device observer node 100% synchronized.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture & Compliance Section -->
+    <section class="features-section" id="architecture" style="border-top: none;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">COMPLIANCE & TRANSPARENCY</span>
+          <h2 class="section-title">Strict Privacy & Security Principles</h2>
+          <p class="section-desc">DebtFreeIn is designed with zero tracking, local credential storage, and explicit user-driven broker authorization.</p>
+        </div>
+
+        <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));">
+          <div class="feature-card">
+            <h3>Google Play Console Compliant</h3>
+            <p>Adheres strictly to target SDK 35 constraints, foreground service declarations, and explicit biometric vault authentication protocols.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Direct Broker Authentication</h3>
+            <p>Upstox API OAuth authorization tokens are generated directly via official Upstox OAuth 2.0 endpoints and encrypted on your local device.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Zero Data Monetization</h3>
+            <p>We do not collect, sell, or transmit financial trade history or API keys to third-party data brokers or external advertisers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="../ic_phone_logo.png" alt="DebtFreeIn Logo">
+            <span>DebtFreeIn</span>
+          </a>
+          <p>Autonomous algorithmic trading, cognitive paper execution, and corporate financial management platform.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#telemetry">Telemetry Feed</a></li>
+            <li><a href="#architecture">Security Specs</a></li>
+            <li><a href="#download">Download APK</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal & Privacy</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="terms.html#disclaimer">Risk Disclaimer</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support & Contact</h4>
+          <ul>
+            <li><a href="mailto:support@udittandon.com">Contact Support</a></li>
+            <li><a href="https://upstox.com" target="_blank" rel="noopener">Upstox Developer Portal</a></li>
+            <li><a href="privacy.html#data-handling">Data Handling FAQs</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 DebtFreeIn (com.udittandon.debtfree). All rights reserved.</div>
+        <div>Designed for High-Performance Quantitative Execution</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

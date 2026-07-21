@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | DebtFreeIn Platform</title>
+  <meta name="description" content="DebtFreeIn Google Play Console compliant Privacy Policy detailing data handling, local encryption, Firebase authentication, and Upstox API token usage.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="../ic_phone_logo.png">
+</head>
+<body>
+  <div class="bg-grid-pattern"></div>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-logo">
+        <img src="../ic_phone_logo.png" alt="DebtFreeIn Logo">
+        <span>DebtFreeIn</span>
+      </a>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html#features" class="nav-link">Features</a></li>
+        <li><a href="index.html#telemetry" class="nav-link">Telemetry</a></li>
+        <li><a href="privacy.html" class="nav-link active">Privacy Policy</a></li>
+        <li><a href="terms.html" class="nav-link">Terms of Use</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="index.html#download" class="btn btn-secondary">Back to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="doc-page">
+    <div class="container">
+      <div class="doc-header">
+        <h1>Privacy Policy</h1>
+        <div class="doc-meta">
+          <span>Application Package: <code>com.udittandon.debtfree</code></span> • 
+          <span>Last Updated: July 21, 2026</span> • 
+          <span>Effective Version: v1.1.3</span>
+        </div>
+      </div>
+
+      <div class="doc-content">
+        <div class="doc-callout">
+          <strong>Key Privacy Pledge:</strong> DebtFreeIn operates on a zero data monetization policy. We do not sell, rent, or trade your personal or financial data to advertisers, data brokers, or third parties. All sensitive API credentials remain stored locally on your device in hardware-backed encrypted storage.
+        </div>
+
+        <h2>1. Overview & Information We Collect</h2>
+        <p>DebtFreeIn ("Application", "we", "our") provides algorithmic trading execution, cognitive paper trading simulation, and debt management utilities. To provide these functionalities, the application handles specific data types:</p>
+        <ul>
+          <li><strong>Firebase Authentication & User Account Data:</strong> Your email address and unique Firebase User Identifier (UID) used strictly for biometric vault syncing and authorized device identification.</li>
+          <li><strong>Broker API Credentials (Upstox):</strong> Upstox API keys, client secrets, and OAuth authorization tokens provided directly by you.</li>
+          <li><strong>Financial Telemetry & Trade Logs:</strong> Real-time session metrics (PnL, active tripwire status, daily round-trip counts) synced to your private Firebase Firestore instance for cross-device monitoring.</li>
+          <li><strong>SMS Transaction Logs (Optional):</strong> Transaction notifications parsed locally on-device to track credit card expense balances. Raw SMS text never leaves your device.</li>
+        </ul>
+
+        <h2 id="data-handling">2. Local Storage & Encryption Architecture</h2>
+        <p>We prioritize hardware-backed encryption to protect your sensitive credentials:</p>
+        <ul>
+          <li>Upstox API keys and secret tokens are stored using Android's <code>EncryptedSharedPreferences</code> backed by the <code>AndroidKeyStore</code> system.</li>
+          <li>Sensitive financial data (credit card limits, debt metrics, and virtual ledgers) is persisted in a local Room SQLite database encrypted on disk.</li>
+          <li>Biometric prompts (Fingerprint / Face Unlock / Device PIN) gate local access to the application via Android Jetpack Biometric API.</li>
+        </ul>
+
+        <h2>3. Third-Party API Integrations</h2>
+
+        <h3>A. Upstox API Integration</h3>
+        <p>DebtFreeIn interfaces directly with the official Upstox V3 API endpoints for order placement, cancelation, and OAuth 2.0 authorization token exchanges. All network requests are routed over TLS 1.3 encrypted HTTPS. Upstox credentials are used exclusively to execute actions explicitly requested by you or governed by your active risk parameters.</p>
+
+        <h3>B. Firebase Services (Google Cloud)</h3>
+        <p>We utilize Firebase Authentication, Cloud Firestore, and Firebase Cloud Messaging (FCM) for user authentication, failover device telemetry, and real-time risk alert notifications. All Firestore collections are protected by strict security rules limiting access exclusively to your authenticated Firebase UID.</p>
+
+        <h3>C. Google Gemini Generative AI SDK</h3>
+        <p>If enabled by you, non-identifiable numerical summaries (such as anonymized trade volume, gross PnL, or aggregated debt figures) are sent to the Gemini API solely for generating financial advice reports and trade post-mortems. No personally identifiable information (PII) is submitted to Gemini.</p>
+
+        <h2>4. Data Retention & User Rights</h2>
+        <p>You maintain complete control over your data at all times:</p>
+        <ul>
+          <li><strong>Data Erasure:</strong> You can clear your API credentials and local database at any time from the app Settings page or by clearing application storage in Android settings.</li>
+          <li><strong>Account Deletion:</strong> Deleting your account will immediately remove all associated Firestore telemetry documents and FCM tokens from our Firebase cloud instance.</li>
+        </ul>
+
+        <h2>5. Compliance with Google Play Developer Policies</h2>
+        <p>This Application strictly adheres to the Google Play Developer Distribution Agreement and User Data policies, including target SDK 35 runtime permissions, transparent foreground service notifications, and strict separation of sensitive scopes.</p>
+
+        <h2>6. Contact & Support</h2>
+        <p>If you have questions regarding this Privacy Policy or your data, please contact our support team at:</p>
+        <p><strong>Email:</strong> <a href="mailto:support@udittandon.com">support@udittandon.com</a><br>
+        <strong>Developer:</strong> Udit Tandon (Package: <code>com.udittandon.debtfree</code>)</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="../ic_phone_logo.png" alt="DebtFreeIn Logo">
+            <span>DebtFreeIn</span>
+          </a>
+          <p>Autonomous algorithmic trading and virtual execution platform.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#telemetry">Telemetry</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="mailto:support@udittandon.com">Email Support</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 DebtFreeIn (com.udittandon.debtfree). All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
