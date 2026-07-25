@@ -1,0 +1,583 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.udittandon.debtfree"
+4    android:versionCode="8"
+5    android:versionName="1.1.3" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="35" />
+10
+11    <!-- Permissions -->
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:6:5-67
+12-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:6:22-64
+13    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+13-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:7:5-70
+13-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:7:22-67
+14    <uses-permission android:name="android.permission.READ_SMS" />
+14-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:8:5-67
+14-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:8:22-64
+15    <uses-permission android:name="android.permission.WAKE_LOCK" />
+15-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:9:5-68
+15-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:9:22-65
+16    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+16-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:10:5-77
+16-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:10:22-74
+17    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+17-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:11:5-89
+17-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:11:22-86
+18    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+18-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:12:5-77
+18-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:12:22-74
+19    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+20    <!-- <uses-sdk android:minSdkVersion="14" /> -->
+21    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+21-->[com.google.firebase:firebase-firestore:24.11.0] C:\Users\uditt\.gradle\caches\8.13\transforms\cf0a15275fd2a7be1b5b4310b54f5889\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:10:5-79
+21-->[com.google.firebase:firebase-firestore:24.11.0] C:\Users\uditt\.gradle\caches\8.13\transforms\cf0a15275fd2a7be1b5b4310b54f5889\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:10:22-76
+22    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+22-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:26:5-82
+22-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:26:22-79
+23    <uses-permission android:name="android.permission.USE_BIOMETRIC" /> <!-- suppress DeprecatedClassUsageInspection -->
+23-->[androidx.biometric:biometric:1.4.0-alpha06] C:\Users\uditt\.gradle\caches\8.13\transforms\92ade864aad09b83f0ba0b98d254b0cf\transformed\biometric-1.4.0-alpha06\AndroidManifest.xml:22:5-72
+23-->[androidx.biometric:biometric:1.4.0-alpha06] C:\Users\uditt\.gradle\caches\8.13\transforms\92ade864aad09b83f0ba0b98d254b0cf\transformed\biometric-1.4.0-alpha06\AndroidManifest.xml:22:22-69
+24    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+24-->[androidx.biometric:biometric:1.4.0-alpha06] C:\Users\uditt\.gradle\caches\8.13\transforms\92ade864aad09b83f0ba0b98d254b0cf\transformed\biometric-1.4.0-alpha06\AndroidManifest.xml:25:5-74
+24-->[androidx.biometric:biometric:1.4.0-alpha06] C:\Users\uditt\.gradle\caches\8.13\transforms\92ade864aad09b83f0ba0b98d254b0cf\transformed\biometric-1.4.0-alpha06\AndroidManifest.xml:25:22-71
+25    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+25-->[com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\0ba968500ea013de5efb5a85f817bd67\transformed\recaptcha-18.4.0\AndroidManifest.xml:9:5-98
+25-->[com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\0ba968500ea013de5efb5a85f817bd67\transformed\recaptcha-18.4.0\AndroidManifest.xml:9:22-95
+26
+27    <permission
+27-->[androidx.core:core:1.13.1] C:\Users\uditt\.gradle\caches\8.13\transforms\2b293ba3aa09e5a8282681475a3121d7\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+28        android:name="com.udittandon.debtfree.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+28-->[androidx.core:core:1.13.1] C:\Users\uditt\.gradle\caches\8.13\transforms\2b293ba3aa09e5a8282681475a3121d7\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+29        android:protectionLevel="signature" />
+29-->[androidx.core:core:1.13.1] C:\Users\uditt\.gradle\caches\8.13\transforms\2b293ba3aa09e5a8282681475a3121d7\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+30
+31    <uses-permission android:name="com.udittandon.debtfree.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+31-->[androidx.core:core:1.13.1] C:\Users\uditt\.gradle\caches\8.13\transforms\2b293ba3aa09e5a8282681475a3121d7\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+31-->[androidx.core:core:1.13.1] C:\Users\uditt\.gradle\caches\8.13\transforms\2b293ba3aa09e5a8282681475a3121d7\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+32
+33    <application
+33-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:14:5-89:19
+34        android:name="com.debtfreein.app.DebtFreeInApp"
+34-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:15:9-38
+35        android:allowBackup="true"
+35-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:16:9-35
+36        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+36-->[androidx.core:core:1.13.1] C:\Users\uditt\.gradle\caches\8.13\transforms\2b293ba3aa09e5a8282681475a3121d7\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+37        android:debuggable="true"
+38        android:extractNativeLibs="false"
+39        android:icon="@mipmap/ic_launcher"
+39-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:17:9-43
+40        android:label="@string/app_name"
+40-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:19:9-41
+41        android:roundIcon="@mipmap/ic_launcher_round"
+41-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:18:9-54
+42        android:supportsRtl="true"
+42-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:20:9-35
+43        android:theme="@style/Theme.DebtFreeIn.Splash" >
+43-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:21:9-55
+44        <activity
+44-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:23:9-44:20
+45            android:name="com.debtfreein.app.ui.MainActivity"
+45-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:24:13-44
+46            android:exported="true"
+46-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:25:13-36
+47            android:theme="@style/Theme.DebtFreeIn.Splash"
+47-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:27:13-59
+48            android:windowSoftInputMode="adjustResize" >
+48-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:26:13-55
+49            <intent-filter>
+49-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:28:13-31:29
+50                <action android:name="android.intent.action.MAIN" />
+50-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:29:17-69
+50-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:29:25-66
+51
+52                <category android:name="android.intent.category.LAUNCHER" />
+52-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:30:17-77
+52-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:30:27-74
+53            </intent-filter>
+54            <intent-filter>
+54-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:32:13-37:29
+55                <action android:name="android.intent.action.VIEW" />
+55-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:33:17-69
+55-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:33:25-66
+56
+57                <category android:name="android.intent.category.DEFAULT" />
+57-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:34:17-76
+57-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:34:27-73
+58                <category android:name="android.intent.category.BROWSABLE" />
+58-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:35:17-78
+58-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:35:27-75
+59
+60                <data
+60-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:36:17-73
+61                    android:host="127.0.0.1"
+61-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:36:46-70
+62                    android:scheme="https" />
+62-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:36:23-45
+63            </intent-filter>
+64            <intent-filter>
+64-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:38:13-43:29
+65                <action android:name="android.intent.action.VIEW" />
+65-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:33:17-69
+65-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:33:25-66
+66
+67                <category android:name="android.intent.category.DEFAULT" />
+67-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:34:17-76
+67-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:34:27-73
+68                <category android:name="android.intent.category.BROWSABLE" />
+68-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:35:17-78
+68-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:35:27-75
+69
+70                <data
+70-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:36:17-73
+71                    android:host="upstox-callback"
+71-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:36:46-70
+72                    android:scheme="debtfreein" />
+72-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:36:23-45
+73            </intent-filter>
+74        </activity>
+75        <activity
+75-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:46:9-50:55
+76            android:name="com.debtfreein.app.CrashReportActivity"
+76-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:47:13-48
+77            android:exported="false"
+77-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:49:13-37
+78            android:process=":crash"
+78-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:48:13-37
+79            android:theme="@style/Theme.DebtFreeIn" />
+79-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:50:13-52
+80
+81        <receiver
+81-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:52:9-60:20
+82            android:name="com.debtfreein.app.data.sms.SmsReceiver"
+82-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:53:13-49
+83            android:enabled="true"
+83-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:54:13-35
+84            android:exported="true"
+84-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:55:13-36
+85            android:permission="android.permission.BROADCAST_SMS" >
+85-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:56:13-66
+86            <intent-filter android:priority="999" >
+86-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:57:13-59:29
+86-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:57:28-50
+87                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+87-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:58:17-82
+87-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:58:25-79
+88            </intent-filter>
+89        </receiver>
+90
+91        <service
+91-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:62:9-70:19
+92            android:name="com.debtfreein.app.data.ai.TradingBotService"
+92-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:63:13-54
+93            android:enabled="true"
+93-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:64:13-35
+94            android:exported="false"
+94-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:65:13-37
+95            android:foregroundServiceType="specialUse" >
+95-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:66:13-55
+96            <property
+96-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:67:13-69:113
+97                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+97-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:68:17-76
+98                android:value="Autonomous paper trading bot and quantitative market hours execution scanner." />
+98-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:69:17-110
+99        </service>
+100        <service
+100-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:72:9-80:19
+101            android:name="com.debtfreein.app.data.ai.FailoverObserverService"
+101-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:73:13-60
+102            android:enabled="true"
+102-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:74:13-35
+103            android:exported="false"
+103-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:75:13-37
+104            android:foregroundServiceType="specialUse" >
+104-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:76:13-55
+105            <property
+105-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:67:13-69:113
+106                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+106-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:68:17-76
+107                android:value="Failover observer service for cross-device high availability monitoring." />
+107-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:69:17-110
+108        </service>
+109        <service
+109-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:82:9-88:19
+110            android:name="com.debtfreein.app.FCMReceiverService"
+110-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:83:13-47
+111            android:exported="false" >
+111-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:84:13-37
+112            <intent-filter>
+112-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:85:13-87:29
+113                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+113-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:86:17-78
+113-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:86:25-75
+114            </intent-filter>
+115        </service>
+116        <service
+116-->[androidx.room:room-runtime:2.6.1] C:\Users\uditt\.gradle\caches\8.13\transforms\c2783fde0ed85d6b42453e87e4156039\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+117            android:name="androidx.room.MultiInstanceInvalidationService"
+117-->[androidx.room:room-runtime:2.6.1] C:\Users\uditt\.gradle\caches\8.13\transforms\c2783fde0ed85d6b42453e87e4156039\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+118            android:directBootAware="true"
+118-->[androidx.room:room-runtime:2.6.1] C:\Users\uditt\.gradle\caches\8.13\transforms\c2783fde0ed85d6b42453e87e4156039\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+119            android:exported="false" />
+119-->[androidx.room:room-runtime:2.6.1] C:\Users\uditt\.gradle\caches\8.13\transforms\c2783fde0ed85d6b42453e87e4156039\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+120        <service
+120-->[com.google.firebase:firebase-firestore:24.11.0] C:\Users\uditt\.gradle\caches\8.13\transforms\cf0a15275fd2a7be1b5b4310b54f5889\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:14:9-23:19
+121            android:name="com.google.firebase.components.ComponentDiscoveryService"
+121-->[com.google.firebase:firebase-firestore:24.11.0] C:\Users\uditt\.gradle\caches\8.13\transforms\cf0a15275fd2a7be1b5b4310b54f5889\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:15:13-84
+122            android:directBootAware="true"
+122-->[com.google.firebase:firebase-common:20.4.2] C:\Users\uditt\.gradle\caches\8.13\transforms\16e1f99345c845b3301b65110efe8003\transformed\firebase-common-20.4.2\AndroidManifest.xml:32:13-43
+123            android:exported="false" >
+123-->[com.google.firebase:firebase-firestore:24.11.0] C:\Users\uditt\.gradle\caches\8.13\transforms\cf0a15275fd2a7be1b5b4310b54f5889\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:16:13-37
+124            <meta-data
+124-->[com.google.firebase:firebase-firestore:24.11.0] C:\Users\uditt\.gradle\caches\8.13\transforms\cf0a15275fd2a7be1b5b4310b54f5889\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:17:13-19:85
+125                android:name="com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar"
+125-->[com.google.firebase:firebase-firestore:24.11.0] C:\Users\uditt\.gradle\caches\8.13\transforms\cf0a15275fd2a7be1b5b4310b54f5889\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:18:17-122
+126                android:value="com.google.firebase.components.ComponentRegistrar" />
+126-->[com.google.firebase:firebase-firestore:24.11.0] C:\Users\uditt\.gradle\caches\8.13\transforms\cf0a15275fd2a7be1b5b4310b54f5889\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:19:17-82
+127            <meta-data
+127-->[com.google.firebase:firebase-firestore:24.11.0] C:\Users\uditt\.gradle\caches\8.13\transforms\cf0a15275fd2a7be1b5b4310b54f5889\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:20:13-22:85
+128                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+128-->[com.google.firebase:firebase-firestore:24.11.0] C:\Users\uditt\.gradle\caches\8.13\transforms\cf0a15275fd2a7be1b5b4310b54f5889\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:21:17-111
+129                android:value="com.google.firebase.components.ComponentRegistrar" />
+129-->[com.google.firebase:firebase-firestore:24.11.0] C:\Users\uditt\.gradle\caches\8.13\transforms\cf0a15275fd2a7be1b5b4310b54f5889\transformed\firebase-firestore-24.11.0\AndroidManifest.xml:22:17-82
+130            <meta-data
+130-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\uditt\.gradle\caches\8.13\transforms\4dcbe2f06df23a5ed797d8f5d769e8e0\transformed\firebase-auth-22.3.1\AndroidManifest.xml:69:13-71:85
+131                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+131-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\uditt\.gradle\caches\8.13\transforms\4dcbe2f06df23a5ed797d8f5d769e8e0\transformed\firebase-auth-22.3.1\AndroidManifest.xml:70:17-109
+132                android:value="com.google.firebase.components.ComponentRegistrar" />
+132-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\uditt\.gradle\caches\8.13\transforms\4dcbe2f06df23a5ed797d8f5d769e8e0\transformed\firebase-auth-22.3.1\AndroidManifest.xml:71:17-82
+133            <meta-data
+133-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:57:13-59:85
+134                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
+134-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:58:17-122
+135                android:value="com.google.firebase.components.ComponentRegistrar" />
+135-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:59:17-82
+136            <meta-data
+136-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:60:13-62:85
+137                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+137-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:61:17-119
+138                android:value="com.google.firebase.components.ComponentRegistrar" />
+138-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:62:17-82
+139            <meta-data
+139-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\uditt\.gradle\caches\8.13\transforms\c4d92e23206ecac0e41bf014c88757cb\transformed\firebase-installations-17.2.0\AndroidManifest.xml:15:13-17:85
+140                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
+140-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\uditt\.gradle\caches\8.13\transforms\c4d92e23206ecac0e41bf014c88757cb\transformed\firebase-installations-17.2.0\AndroidManifest.xml:16:17-130
+141                android:value="com.google.firebase.components.ComponentRegistrar" />
+141-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\uditt\.gradle\caches\8.13\transforms\c4d92e23206ecac0e41bf014c88757cb\transformed\firebase-installations-17.2.0\AndroidManifest.xml:17:17-82
+142            <meta-data
+142-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\uditt\.gradle\caches\8.13\transforms\c4d92e23206ecac0e41bf014c88757cb\transformed\firebase-installations-17.2.0\AndroidManifest.xml:18:13-20:85
+143                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+143-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\uditt\.gradle\caches\8.13\transforms\c4d92e23206ecac0e41bf014c88757cb\transformed\firebase-installations-17.2.0\AndroidManifest.xml:19:17-127
+144                android:value="com.google.firebase.components.ComponentRegistrar" />
+144-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\uditt\.gradle\caches\8.13\transforms\c4d92e23206ecac0e41bf014c88757cb\transformed\firebase-installations-17.2.0\AndroidManifest.xml:20:17-82
+145            <meta-data
+145-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\uditt\.gradle\caches\8.13\transforms\cd4b1ed0fb9f930c8bf53bb75ebf0b88\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:12:13-14:85
+146                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+146-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\uditt\.gradle\caches\8.13\transforms\cd4b1ed0fb9f930c8bf53bb75ebf0b88\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:13:17-116
+147                android:value="com.google.firebase.components.ComponentRegistrar" />
+147-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\uditt\.gradle\caches\8.13\transforms\cd4b1ed0fb9f930c8bf53bb75ebf0b88\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:14:17-82
+148            <meta-data
+148-->[com.google.firebase:firebase-common:20.4.2] C:\Users\uditt\.gradle\caches\8.13\transforms\16e1f99345c845b3301b65110efe8003\transformed\firebase-common-20.4.2\AndroidManifest.xml:35:13-37:85
+149                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+149-->[com.google.firebase:firebase-common:20.4.2] C:\Users\uditt\.gradle\caches\8.13\transforms\16e1f99345c845b3301b65110efe8003\transformed\firebase-common-20.4.2\AndroidManifest.xml:36:17-109
+150                android:value="com.google.firebase.components.ComponentRegistrar" />
+150-->[com.google.firebase:firebase-common:20.4.2] C:\Users\uditt\.gradle\caches\8.13\transforms\16e1f99345c845b3301b65110efe8003\transformed\firebase-common-20.4.2\AndroidManifest.xml:37:17-82
+151            <meta-data
+151-->[com.google.firebase:firebase-datatransport:18.1.7] C:\Users\uditt\.gradle\caches\8.13\transforms\3217b2368f6ee6a16cf366f7689522d4\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:27:13-29:85
+152                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+152-->[com.google.firebase:firebase-datatransport:18.1.7] C:\Users\uditt\.gradle\caches\8.13\transforms\3217b2368f6ee6a16cf366f7689522d4\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:28:17-115
+153                android:value="com.google.firebase.components.ComponentRegistrar" />
+153-->[com.google.firebase:firebase-datatransport:18.1.7] C:\Users\uditt\.gradle\caches\8.13\transforms\3217b2368f6ee6a16cf366f7689522d4\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:29:17-82
+154        </service>
+155
+156        <activity
+156-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\uditt\.gradle\caches\8.13\transforms\4dcbe2f06df23a5ed797d8f5d769e8e0\transformed\firebase-auth-22.3.1\AndroidManifest.xml:29:9-46:20
+157            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+157-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\uditt\.gradle\caches\8.13\transforms\4dcbe2f06df23a5ed797d8f5d769e8e0\transformed\firebase-auth-22.3.1\AndroidManifest.xml:30:13-80
+158            android:excludeFromRecents="true"
+158-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\uditt\.gradle\caches\8.13\transforms\4dcbe2f06df23a5ed797d8f5d769e8e0\transformed\firebase-auth-22.3.1\AndroidManifest.xml:31:13-46
+159            android:exported="true"
+159-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\uditt\.gradle\caches\8.13\transforms\4dcbe2f06df23a5ed797d8f5d769e8e0\transformed\firebase-auth-22.3.1\AndroidManifest.xml:32:13-36
+160            android:launchMode="singleTask"
+160-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\uditt\.gradle\caches\8.13\transforms\4dcbe2f06df23a5ed797d8f5d769e8e0\transformed\firebase-auth-22.3.1\AndroidManifest.xml:33:13-44
+161            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+161-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\uditt\.gradle\caches\8.13\transforms\4dcbe2f06df23a5ed797d8f5d769e8e0\transformed\firebase-auth-22.3.1\AndroidManifest.xml:34:13-72
+162            <intent-filter>
+162-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\uditt\.gradle\caches\8.13\transforms\4dcbe2f06df23a5ed797d8f5d769e8e0\transformed\firebase-auth-22.3.1\AndroidManifest.xml:35:13-45:29
+163                <action android:name="android.intent.action.VIEW" />
+163-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:33:17-69
+163-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:33:25-66
+164
+165                <category android:name="android.intent.category.DEFAULT" />
+165-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:34:17-76
+165-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:34:27-73
+166                <category android:name="android.intent.category.BROWSABLE" />
+166-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:35:17-78
+166-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:35:27-75
+167
+168                <data
+168-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:36:17-73
+169                    android:host="firebase.auth"
+169-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:36:46-70
+170                    android:path="/"
+171                    android:scheme="genericidp" />
+171-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:36:23-45
+172            </intent-filter>
+173        </activity>
+174        <activity
+174-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\uditt\.gradle\caches\8.13\transforms\4dcbe2f06df23a5ed797d8f5d769e8e0\transformed\firebase-auth-22.3.1\AndroidManifest.xml:47:9-64:20
+175            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+175-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\uditt\.gradle\caches\8.13\transforms\4dcbe2f06df23a5ed797d8f5d769e8e0\transformed\firebase-auth-22.3.1\AndroidManifest.xml:48:13-79
+176            android:excludeFromRecents="true"
+176-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\uditt\.gradle\caches\8.13\transforms\4dcbe2f06df23a5ed797d8f5d769e8e0\transformed\firebase-auth-22.3.1\AndroidManifest.xml:49:13-46
+177            android:exported="true"
+177-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\uditt\.gradle\caches\8.13\transforms\4dcbe2f06df23a5ed797d8f5d769e8e0\transformed\firebase-auth-22.3.1\AndroidManifest.xml:50:13-36
+178            android:launchMode="singleTask"
+178-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\uditt\.gradle\caches\8.13\transforms\4dcbe2f06df23a5ed797d8f5d769e8e0\transformed\firebase-auth-22.3.1\AndroidManifest.xml:51:13-44
+179            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+179-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\uditt\.gradle\caches\8.13\transforms\4dcbe2f06df23a5ed797d8f5d769e8e0\transformed\firebase-auth-22.3.1\AndroidManifest.xml:52:13-72
+180            <intent-filter>
+180-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\uditt\.gradle\caches\8.13\transforms\4dcbe2f06df23a5ed797d8f5d769e8e0\transformed\firebase-auth-22.3.1\AndroidManifest.xml:53:13-63:29
+181                <action android:name="android.intent.action.VIEW" />
+181-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:33:17-69
+181-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:33:25-66
+182
+183                <category android:name="android.intent.category.DEFAULT" />
+183-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:34:17-76
+183-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:34:27-73
+184                <category android:name="android.intent.category.BROWSABLE" />
+184-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:35:17-78
+184-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:35:27-75
+185
+186                <data
+186-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:36:17-73
+187                    android:host="firebase.auth"
+187-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:36:46-70
+188                    android:path="/"
+189                    android:scheme="recaptcha" />
+189-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:36:23-45
+190            </intent-filter>
+191        </activity>
+192
+193        <receiver
+193-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:29:9-40:20
+194            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+194-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:30:13-78
+195            android:exported="true"
+195-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:31:13-36
+196            android:permission="com.google.android.c2dm.permission.SEND" >
+196-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:32:13-73
+197            <intent-filter>
+197-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:33:13-35:29
+198                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+198-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:34:17-81
+198-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:34:25-78
+199            </intent-filter>
+200
+201            <meta-data
+201-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:37:13-39:40
+202                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
+202-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:38:17-92
+203                android:value="true" />
+203-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:39:17-37
+204        </receiver>
+205        <!--
+206             FirebaseMessagingService performs security checks at runtime,
+207             but set to not exported to explicitly avoid allowing another app to call it.
+208        -->
+209        <service
+209-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:46:9-53:19
+210            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+210-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:47:13-82
+211            android:directBootAware="true"
+211-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:48:13-43
+212            android:exported="false" >
+212-->[com.google.firebase:firebase-messaging:23.4.1] C:\Users\uditt\.gradle\caches\8.13\transforms\92ef578d3ed100d33d010465837918c7\transformed\firebase-messaging-23.4.1\AndroidManifest.xml:49:13-37
+213            <intent-filter android:priority="-500" >
+213-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:85:13-87:29
+214                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+214-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:86:17-78
+214-->C:\Users\uditt\Desktop\Antigravity\Debtfreein\app\src\main\AndroidManifest.xml:86:25-75
+215            </intent-filter>
+216        </service>
+217
+218        <activity
+218-->[androidx.biometric:biometric:1.4.0-alpha06] C:\Users\uditt\.gradle\caches\8.13\transforms\92ade864aad09b83f0ba0b98d254b0cf\transformed\biometric-1.4.0-alpha06\AndroidManifest.xml:28:9-32:67
+219            android:name="androidx.biometric.internal.ui.FingerprintDialogActivity"
+219-->[androidx.biometric:biometric:1.4.0-alpha06] C:\Users\uditt\.gradle\caches\8.13\transforms\92ade864aad09b83f0ba0b98d254b0cf\transformed\biometric-1.4.0-alpha06\AndroidManifest.xml:29:13-84
+220            android:exported="false"
+220-->[androidx.biometric:biometric:1.4.0-alpha06] C:\Users\uditt\.gradle\caches\8.13\transforms\92ade864aad09b83f0ba0b98d254b0cf\transformed\biometric-1.4.0-alpha06\AndroidManifest.xml:30:13-37
+221            android:label="@string/fingerprint_dialog_activity_label"
+221-->[androidx.biometric:biometric:1.4.0-alpha06] C:\Users\uditt\.gradle\caches\8.13\transforms\92ade864aad09b83f0ba0b98d254b0cf\transformed\biometric-1.4.0-alpha06\AndroidManifest.xml:31:13-70
+222            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
+222-->[androidx.biometric:biometric:1.4.0-alpha06] C:\Users\uditt\.gradle\caches\8.13\transforms\92ade864aad09b83f0ba0b98d254b0cf\transformed\biometric-1.4.0-alpha06\AndroidManifest.xml:32:13-64
+223
+224        <provider
+224-->[com.google.firebase:firebase-common:20.4.2] C:\Users\uditt\.gradle\caches\8.13\transforms\16e1f99345c845b3301b65110efe8003\transformed\firebase-common-20.4.2\AndroidManifest.xml:23:9-28:39
+225            android:name="com.google.firebase.provider.FirebaseInitProvider"
+225-->[com.google.firebase:firebase-common:20.4.2] C:\Users\uditt\.gradle\caches\8.13\transforms\16e1f99345c845b3301b65110efe8003\transformed\firebase-common-20.4.2\AndroidManifest.xml:24:13-77
+226            android:authorities="com.udittandon.debtfree.firebaseinitprovider"
+226-->[com.google.firebase:firebase-common:20.4.2] C:\Users\uditt\.gradle\caches\8.13\transforms\16e1f99345c845b3301b65110efe8003\transformed\firebase-common-20.4.2\AndroidManifest.xml:25:13-72
+227            android:directBootAware="true"
+227-->[com.google.firebase:firebase-common:20.4.2] C:\Users\uditt\.gradle\caches\8.13\transforms\16e1f99345c845b3301b65110efe8003\transformed\firebase-common-20.4.2\AndroidManifest.xml:26:13-43
+228            android:exported="false"
+228-->[com.google.firebase:firebase-common:20.4.2] C:\Users\uditt\.gradle\caches\8.13\transforms\16e1f99345c845b3301b65110efe8003\transformed\firebase-common-20.4.2\AndroidManifest.xml:27:13-37
+229            android:initOrder="100" />
+229-->[com.google.firebase:firebase-common:20.4.2] C:\Users\uditt\.gradle\caches\8.13\transforms\16e1f99345c845b3301b65110efe8003\transformed\firebase-common-20.4.2\AndroidManifest.xml:28:13-36
+230
+231        <activity
+231-->[com.google.android.gms:play-services-auth:21.0.0] C:\Users\uditt\.gradle\caches\8.13\transforms\953b1761348a9ffda72ab1c1ee1a1844\transformed\play-services-auth-21.0.0\AndroidManifest.xml:23:9-27:75
+232            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+232-->[com.google.android.gms:play-services-auth:21.0.0] C:\Users\uditt\.gradle\caches\8.13\transforms\953b1761348a9ffda72ab1c1ee1a1844\transformed\play-services-auth-21.0.0\AndroidManifest.xml:24:13-93
+233            android:excludeFromRecents="true"
+233-->[com.google.android.gms:play-services-auth:21.0.0] C:\Users\uditt\.gradle\caches\8.13\transforms\953b1761348a9ffda72ab1c1ee1a1844\transformed\play-services-auth-21.0.0\AndroidManifest.xml:25:13-46
+234            android:exported="false"
+234-->[com.google.android.gms:play-services-auth:21.0.0] C:\Users\uditt\.gradle\caches\8.13\transforms\953b1761348a9ffda72ab1c1ee1a1844\transformed\play-services-auth-21.0.0\AndroidManifest.xml:26:13-37
+235            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+235-->[com.google.android.gms:play-services-auth:21.0.0] C:\Users\uditt\.gradle\caches\8.13\transforms\953b1761348a9ffda72ab1c1ee1a1844\transformed\play-services-auth-21.0.0\AndroidManifest.xml:27:13-72
+236        <!--
+237            Service handling Google Sign-In user revocation. For apps that do not integrate with
+238            Google Sign-In, this service will never be started.
+239        -->
+240        <service
+240-->[com.google.android.gms:play-services-auth:21.0.0] C:\Users\uditt\.gradle\caches\8.13\transforms\953b1761348a9ffda72ab1c1ee1a1844\transformed\play-services-auth-21.0.0\AndroidManifest.xml:33:9-37:51
+241            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+241-->[com.google.android.gms:play-services-auth:21.0.0] C:\Users\uditt\.gradle\caches\8.13\transforms\953b1761348a9ffda72ab1c1ee1a1844\transformed\play-services-auth-21.0.0\AndroidManifest.xml:34:13-89
+242            android:exported="true"
+242-->[com.google.android.gms:play-services-auth:21.0.0] C:\Users\uditt\.gradle\caches\8.13\transforms\953b1761348a9ffda72ab1c1ee1a1844\transformed\play-services-auth-21.0.0\AndroidManifest.xml:35:13-36
+243            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+243-->[com.google.android.gms:play-services-auth:21.0.0] C:\Users\uditt\.gradle\caches\8.13\transforms\953b1761348a9ffda72ab1c1ee1a1844\transformed\play-services-auth-21.0.0\AndroidManifest.xml:36:13-107
+244            android:visibleToInstantApps="true" />
+244-->[com.google.android.gms:play-services-auth:21.0.0] C:\Users\uditt\.gradle\caches\8.13\transforms\953b1761348a9ffda72ab1c1ee1a1844\transformed\play-services-auth-21.0.0\AndroidManifest.xml:37:13-48
+245
+246        <activity
+246-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\uditt\.gradle\caches\8.13\transforms\e516327842d1dd1a848c56a366c60600\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+247            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+247-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\uditt\.gradle\caches\8.13\transforms\e516327842d1dd1a848c56a366c60600\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+248            android:exported="false"
+248-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\uditt\.gradle\caches\8.13\transforms\e516327842d1dd1a848c56a366c60600\transformed\play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+249            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+249-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\uditt\.gradle\caches\8.13\transforms\e516327842d1dd1a848c56a366c60600\transformed\play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+250        <activity
+250-->[androidx.compose.ui:ui-test-manifest:1.7.8] C:\Users\uditt\.gradle\caches\8.13\transforms\2b88b9625050e9cb93158319f5b08be3\transformed\ui-test-manifest-1.7.8\AndroidManifest.xml:23:9-25:39
+251            android:name="androidx.activity.ComponentActivity"
+251-->[androidx.compose.ui:ui-test-manifest:1.7.8] C:\Users\uditt\.gradle\caches\8.13\transforms\2b88b9625050e9cb93158319f5b08be3\transformed\ui-test-manifest-1.7.8\AndroidManifest.xml:24:13-63
+252            android:exported="true" />
+252-->[androidx.compose.ui:ui-test-manifest:1.7.8] C:\Users\uditt\.gradle\caches\8.13\transforms\2b88b9625050e9cb93158319f5b08be3\transformed\ui-test-manifest-1.7.8\AndroidManifest.xml:25:13-36
+253        <activity
+253-->[androidx.compose.ui:ui-tooling-android:1.7.8] C:\Users\uditt\.gradle\caches\8.13\transforms\6894bfe42c852f8045778f6e5001bea2\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
+254            android:name="androidx.compose.ui.tooling.PreviewActivity"
+254-->[androidx.compose.ui:ui-tooling-android:1.7.8] C:\Users\uditt\.gradle\caches\8.13\transforms\6894bfe42c852f8045778f6e5001bea2\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
+255            android:exported="true" />
+255-->[androidx.compose.ui:ui-tooling-android:1.7.8] C:\Users\uditt\.gradle\caches\8.13\transforms\6894bfe42c852f8045778f6e5001bea2\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
+256
+257        <provider
+257-->[androidx.emoji2:emoji2:1.3.0] C:\Users\uditt\.gradle\caches\8.13\transforms\0c9756188fc4ea62b0f1115030a84232\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+258            android:name="androidx.startup.InitializationProvider"
+258-->[androidx.emoji2:emoji2:1.3.0] C:\Users\uditt\.gradle\caches\8.13\transforms\0c9756188fc4ea62b0f1115030a84232\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+259            android:authorities="com.udittandon.debtfree.androidx-startup"
+259-->[androidx.emoji2:emoji2:1.3.0] C:\Users\uditt\.gradle\caches\8.13\transforms\0c9756188fc4ea62b0f1115030a84232\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+260            android:exported="false" >
+260-->[androidx.emoji2:emoji2:1.3.0] C:\Users\uditt\.gradle\caches\8.13\transforms\0c9756188fc4ea62b0f1115030a84232\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+261            <meta-data
+261-->[androidx.emoji2:emoji2:1.3.0] C:\Users\uditt\.gradle\caches\8.13\transforms\0c9756188fc4ea62b0f1115030a84232\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+262                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+262-->[androidx.emoji2:emoji2:1.3.0] C:\Users\uditt\.gradle\caches\8.13\transforms\0c9756188fc4ea62b0f1115030a84232\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+263                android:value="androidx.startup" />
+263-->[androidx.emoji2:emoji2:1.3.0] C:\Users\uditt\.gradle\caches\8.13\transforms\0c9756188fc4ea62b0f1115030a84232\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+264            <meta-data
+264-->[androidx.lifecycle:lifecycle-process:2.9.0] C:\Users\uditt\.gradle\caches\8.13\transforms\d1818a03b447548ed6a4e527d37f6ff9\transformed\lifecycle-process-2.9.0\AndroidManifest.xml:29:13-31:52
+265                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+265-->[androidx.lifecycle:lifecycle-process:2.9.0] C:\Users\uditt\.gradle\caches\8.13\transforms\d1818a03b447548ed6a4e527d37f6ff9\transformed\lifecycle-process-2.9.0\AndroidManifest.xml:30:17-78
+266                android:value="androidx.startup" />
+266-->[androidx.lifecycle:lifecycle-process:2.9.0] C:\Users\uditt\.gradle\caches\8.13\transforms\d1818a03b447548ed6a4e527d37f6ff9\transformed\lifecycle-process-2.9.0\AndroidManifest.xml:31:17-49
+267            <meta-data
+267-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+268                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+268-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+269                android:value="androidx.startup" />
+269-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+270        </provider>
+271
+272        <meta-data
+272-->[com.google.android.gms:play-services-basement:18.2.0] C:\Users\uditt\.gradle\caches\8.13\transforms\d0d416fcfc4a07aa927ec223b3bfb0b9\transformed\play-services-basement-18.2.0\AndroidManifest.xml:21:9-23:69
+273            android:name="com.google.android.gms.version"
+273-->[com.google.android.gms:play-services-basement:18.2.0] C:\Users\uditt\.gradle\caches\8.13\transforms\d0d416fcfc4a07aa927ec223b3bfb0b9\transformed\play-services-basement-18.2.0\AndroidManifest.xml:22:13-58
+274            android:value="@integer/google_play_services_version" />
+274-->[com.google.android.gms:play-services-basement:18.2.0] C:\Users\uditt\.gradle\caches\8.13\transforms\d0d416fcfc4a07aa927ec223b3bfb0b9\transformed\play-services-basement-18.2.0\AndroidManifest.xml:23:13-66
+275
+276        <receiver
+276-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+277            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+277-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+278            android:directBootAware="false"
+278-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+279            android:enabled="true"
+279-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+280            android:exported="true"
+280-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+281            android:permission="android.permission.DUMP" >
+281-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+282            <intent-filter>
+282-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+283                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+283-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+283-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+284            </intent-filter>
+285            <intent-filter>
+285-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+286                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+286-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+286-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+287            </intent-filter>
+288            <intent-filter>
+288-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+289                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+289-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+289-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+290            </intent-filter>
+291            <intent-filter>
+291-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+292                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+292-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+292-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\uditt\.gradle\caches\8.13\transforms\70f1eae281252846fe53b7d5837e010e\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
+293            </intent-filter>
+294        </receiver>
+295
+296        <service
+296-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\uditt\.gradle\caches\8.13\transforms\755163d40136c8657a27bc232f62147d\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:28:9-34:19
+297            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+297-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\uditt\.gradle\caches\8.13\transforms\755163d40136c8657a27bc232f62147d\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:29:13-103
+298            android:exported="false" >
+298-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\uditt\.gradle\caches\8.13\transforms\755163d40136c8657a27bc232f62147d\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:30:13-37
+299            <meta-data
+299-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\uditt\.gradle\caches\8.13\transforms\755163d40136c8657a27bc232f62147d\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:31:13-33:39
+300                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+300-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\uditt\.gradle\caches\8.13\transforms\755163d40136c8657a27bc232f62147d\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:32:17-94
+301                android:value="cct" />
+301-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\uditt\.gradle\caches\8.13\transforms\755163d40136c8657a27bc232f62147d\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:33:17-36
+302        </service>
+303        <service
+303-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\uditt\.gradle\caches\8.13\transforms\2f25dc44be7a20e1db2d52f0f984d0dd\transformed\transport-runtime-3.1.8\AndroidManifest.xml:26:9-30:19
+304            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+304-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\uditt\.gradle\caches\8.13\transforms\2f25dc44be7a20e1db2d52f0f984d0dd\transformed\transport-runtime-3.1.8\AndroidManifest.xml:27:13-117
+305            android:exported="false"
+305-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\uditt\.gradle\caches\8.13\transforms\2f25dc44be7a20e1db2d52f0f984d0dd\transformed\transport-runtime-3.1.8\AndroidManifest.xml:28:13-37
+306            android:permission="android.permission.BIND_JOB_SERVICE" >
+306-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\uditt\.gradle\caches\8.13\transforms\2f25dc44be7a20e1db2d52f0f984d0dd\transformed\transport-runtime-3.1.8\AndroidManifest.xml:29:13-69
+307        </service>
+308
+309        <receiver
+309-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\uditt\.gradle\caches\8.13\transforms\2f25dc44be7a20e1db2d52f0f984d0dd\transformed\transport-runtime-3.1.8\AndroidManifest.xml:32:9-34:40
+310            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+310-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\uditt\.gradle\caches\8.13\transforms\2f25dc44be7a20e1db2d52f0f984d0dd\transformed\transport-runtime-3.1.8\AndroidManifest.xml:33:13-132
+311            android:exported="false" />
+311-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\uditt\.gradle\caches\8.13\transforms\2f25dc44be7a20e1db2d52f0f984d0dd\transformed\transport-runtime-3.1.8\AndroidManifest.xml:34:13-37
+312    </application>
+313
+314</manifest>

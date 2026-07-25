@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "com.debtfreein.app-debug-70:/drawable_ic_splash_logo.png.flat",
+        "source": "com.debtfreein.app-main-72:/drawable/ic_splash_logo.png"
+    },
+    {
+        "merged": "com.debtfreein.app-debug-70:/drawable_ic_launcher_foreground.png.flat",
+        "source": "com.debtfreein.app-main-72:/drawable/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.debtfreein.app-debug-70:/drawable_ic_phone_logo.png.flat",
+        "source": "com.debtfreein.app-main-72:/drawable/ic_phone_logo.png"
+    },
+    {
+        "merged": "com.debtfreein.app-debug-70:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.debtfreein.app-main-72:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.debtfreein.app-debug-70:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.debtfreein.app-main-72:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.debtfreein.app-debug-70:/drawable_img_empty_financial_peace.png.flat",
+        "source": "com.debtfreein.app-main-72:/drawable/img_empty_financial_peace.png"
+    }
+]

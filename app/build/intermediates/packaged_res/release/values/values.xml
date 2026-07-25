@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#121212</color>
+    <string name="app_name">DebtFreeIn</string>
+    <string name="default_web_client_id" translatable="false">679844265247-o8ca4j2omcqi9n6i1pqsf6ghovn7rl7r.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">679844265247</string>
+    <string name="google_api_key" translatable="false">AIzaSyDBGaXAoNx6WohVSKPfvd5YKoQ2gh2bn8k</string>
+    <string name="google_app_id" translatable="false">1:679844265247:android:f1e744c04245ef96cd042a</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDBGaXAoNx6WohVSKPfvd5YKoQ2gh2bn8k</string>
+    <string name="google_storage_bucket" translatable="false">debtfreein-db.firebasestorage.app</string>
+    <string name="project_id" translatable="false">debtfreein-db</string>
+    <style name="Theme.DebtFreeIn" parent="android:Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">#121212</item>
+        <item name="android:navigationBarColor">#121212</item>
+    </style>
+    <style name="Theme.DebtFreeIn.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#121212</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.DebtFreeIn</item>
+    </style>
+</resources>

@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.debtfreein.app-mergeDebugResources-68:/values-v31/values-v31.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\uditt\\.gradle\\caches\\8.13\\transforms\\12e49982bc0405bb6da640a499fb588e\\transformed\\core-splashscreen-1.0.1\\res\\values-v31\\values-v31.xml",
+                    "from": {
+                        "startLines": "2,9",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,473",
+                        "endLines": "8,13",
+                        "endColumns": "12,12",
+                        "endOffsets": "468,697"
+                    }
+                }
+            ]
+        }
+    ]
+}

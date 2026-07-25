@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.debtfreein.app.DeduplicationTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-07-19T13:45:19" hostname="MY_GALAXY" time="0.024">
+  <properties/>
+  <testcase name="testDeduplication_noMatchOutside15Minutes" classname="com.debtfreein.app.DeduplicationTest" time="0.017"/>
+  <testcase name="testDeduplication_matchFoundWithin15Minutes" classname="com.debtfreein.app.DeduplicationTest" time="0.007"/>
+  <testcase name="testDeduplication_noMatchFound" classname="com.debtfreein.app.DeduplicationTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
