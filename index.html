@@ -36,6 +36,13 @@
       }
     }
   </script>
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
 </head>
 <body class="bg-brand-light dark:bg-brand-dark text-brand-textLight dark:text-brand-textDark font-sans transition-colors duration-300 antialiased selection:bg-brand-accent selection:text-black">
 
