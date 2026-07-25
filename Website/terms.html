@@ -1,132 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service & Financial Risk Disclaimer | DebtFreeIn</title>
-  <meta name="description" content="DebtFreeIn Financial Software Terms of Use and Risk Disclaimer clarifying virtual ledger paper trading, algorithmic execution risks, and user responsibilities.">
-  <link rel="stylesheet" href="styles.css">
+  <title>Terms of Service | DebtFreeIn Platform</title>
+  <meta name="description" content="DebtFreeIn Financial Software Terms of Service and Risk Disclaimer.">
   <link rel="icon" type="image/png" href="./ic_phone_logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              dark: '#0B0F19',
+              light: '#FFFFFF',
+              cardDark: '#1F2937',
+              cardLight: '#FFFFFF',
+              accent: '#00E5FF',
+              textDark: '#9CA3AF',
+              textLight: '#4B5563',
+              headingDark: '#F9FAFB',
+              headingLight: '#1E1E24'
+            }
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
-  <div class="bg-grid-pattern"></div>
+<body class="bg-brand-light dark:bg-brand-dark text-brand-textLight dark:text-brand-textDark font-sans transition-colors duration-300 antialiased selection:bg-brand-accent selection:text-black">
 
-  <!-- Site Navigation -->
-  <header class="site-header">
-    <div class="container nav-wrapper">
-      <a href="index.html" class="brand-logo">
-        <img src="./ic_phone_logo.png" alt="DebtFreeIn Logo">
-        <span>DebtFreeIn</span>
+  <!-- Header -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-[#0B0F19]/80 border-b border-black/5 dark:border-white/10 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-brand-accent/10 border border-brand-accent/30 flex items-center justify-center p-1.5 transition-transform duration-300 group-hover:scale-105">
+          <img src="./ic_phone_logo.png" alt="DebtFreeIn Logo" class="w-full h-full object-contain">
+        </div>
+        <div class="flex flex-col">
+          <span class="font-extrabold text-xl text-brand-headingLight dark:text-brand-headingDark tracking-tight">DebtFreeIn</span>
+          <span class="text-[10px] font-mono font-semibold tracking-widest text-brand-accent uppercase">Terms of Use</span>
+        </div>
       </a>
 
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+        <a href="index.html" class="hover:text-brand-accent transition-colors duration-200">Home</a>
+        <a href="engine.html" class="hover:text-brand-accent transition-colors duration-200">Engine</a>
+        <a href="privacy.html" class="hover:text-brand-accent transition-colors duration-200">Privacy</a>
+        <a href="terms.html" class="text-brand-headingLight dark:text-brand-headingDark font-semibold">Terms</a>
+      </nav>
 
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="index.html#features" class="nav-link">Features</a></li>
-        <li><a href="index.html#telemetry" class="nav-link">Telemetry</a></li>
-        <li><a href="privacy.html" class="nav-link">Privacy Policy</a></li>
-        <li><a href="terms.html" class="nav-link active">Terms of Use</a></li>
-      </ul>
-
-      <div class="nav-actions">
-        <a href="index.html#download" class="btn btn-secondary">Back to Home</a>
+      <div class="flex items-center space-x-4">
+        <button id="themeToggle" class="p-2.5 rounded-xl border border-black/10 dark:border-white/10 text-brand-headingLight dark:text-brand-headingDark hover:bg-black/5 dark:hover:bg-white/5 transition-all duration-300" aria-label="Toggle Theme">
+          <svg id="sunIcon" class="w-5 h-5 hidden dark:block text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          <svg id="moonIcon" class="w-5 h-5 block dark:hidden text-brand-headingLight" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
       </div>
     </div>
   </header>
 
-  <main class="doc-page">
-    <div class="container">
-      <div class="doc-header">
-        <h1>Terms of Service & Risk Disclaimer</h1>
-        <div class="doc-meta">
-          <span>Application Package: <code>com.udittandon.debtfree</code></span> • 
-          <span>Last Updated: July 21, 2026</span> • 
-          <span>Version: v1.1.3</span>
-        </div>
-      </div>
+  <!-- Terms Body -->
+  <main class="py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <h1 class="text-4xl font-black text-brand-headingLight dark:text-brand-headingDark">Terms of Service & Risk Disclaimer</h1>
+      <p class="text-sm font-mono text-brand-accent">Effective Date: May 1, 2026</p>
 
-      <div class="doc-content">
-        <div class="doc-callout" style="border-left-color: var(--accent-amber); background: rgba(245, 158, 11, 0.08);">
-          <strong style="color: var(--accent-amber);">CRITICAL FINANCIAL RISK WARNING:</strong> Trading financial instruments (including equities, derivatives, and intraday positions) carries substantial risk of loss. DebtFreeIn is quantitative software provided for analytical, automated risk-control, and simulation purposes. Past simulated performance in paper trading mode does not guarantee real-world market results.
-        </div>
+      <div class="space-y-6 text-sm leading-relaxed">
+        <section class="space-y-2">
+          <h2 class="text-lg font-bold text-brand-headingLight dark:text-brand-headingDark">1. Quantitative Risk Disclaimer</h2>
+          <p>
+            Algorithmic trading in equities involves financial risk. Past backtested performance is not a guarantee of future live execution results. Users are fully responsible for managing broker API keys, master execution switches, and capital allocations.
+          </p>
+        </section>
 
-        <h2 id="disclaimer">1. Financial Software & Non-Advisory Disclaimer</h2>
-        <p>DebtFreeIn is an automated technology tool and quantitative execution assistant. DebtFreeIn is <strong>not</strong> a registered SEBI investment advisor, broker-dealer, or financial consultant. No feature within the application—including automated trade tickets, AI post-mortems, or ATR volatility indicators—constitutes financial advice or an endorsement to buy or sell securities.</p>
-
-        <h2>2. Cognitive Paper Trading & Virtual Ledger Simulation</h2>
-        <p>The Application includes a default "Cognitive Paper Trading" mode utilizing a virtual ledger:</p>
-        <ul>
-          <li>All virtual ledger balances, simulated PnL figures, and trade post-mortems are generated in a local sandbox environment.</li>
-          <li>Paper trading applies a 0.05% slippage model and estimated Upstox brokerage friction charges for simulation accuracy, but real market liquidity, order queue positions, and exchange latency may differ significantly.</li>
-        </ul>
-
-        <h2>3. Direct Broker Execution & User Responsibility</h2>
-        <p>When you disable Paper Trading Mode and connect your Upstox API credentials, you grant the Application permission to submit order requests to Upstox on your behalf:</p>
-        <ul>
-          <li>You are solely responsible for setting appropriate capital limits, target PnL caps, and drawdown thresholds.</li>
-          <li>You acknowledge that network connectivity disruptions, broker API rate limits, or exchange halts may affect automated order cancelations or position square-offs.</li>
-          <li>We assume no liability for real-money financial losses resulting from market volatility, execution slippage, broker API downtime, or user-configured risk parameters.</li>
-        </ul>
-
-        <h2>4. Software License & Acceptable Use</h2>
-        <p>Subject to these Terms, we grant you a limited, non-exclusive, non-transferable license to install and use the DebtFreeIn mobile application on your personal Android devices. You agree not to reverse engineer, decompile, or attempt to extract source code for commercial redistribution.</p>
-
-        <h2>5. Limitation of Liability</h2>
-        <p>To the maximum extent permitted by applicable law, DebtFreeIn and its developers shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising from the use of, or inability to use, the software or third-party broker integrations.</p>
-
-        <h2>6. Modifications to Terms</h2>
-        <p>We reserve the right to update these Terms of Service at any time. Continued use of the Application following published updates constitutes acceptance of the revised terms.</p>
-
-        <h2>7. Contact Information</h2>
-        <p>For questions or inquiries regarding these Terms of Service, please contact:</p>
-        <p><strong>Support Email:</strong> <a href="mailto:support@udittandon.com">support@udittandon.com</a></p>
+        <section class="space-y-2">
+          <h2 class="text-lg font-bold text-brand-headingLight dark:text-brand-headingDark">2. Educational & Software Purpose</h2>
+          <p>
+            DebtFreeIn is an autonomous software tool providing cognitive paper trading and quantitative risk calculations. It is not registered as a SEBI financial advisor.
+          </p>
+        </section>
       </div>
     </div>
   </main>
 
-  <!-- Site Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="brand-logo">
-            <img src="./ic_phone_logo.png" alt="DebtFreeIn Logo">
-            <span>DebtFreeIn</span>
-          </a>
-          <p>Autonomous algorithmic trading and virtual execution platform.</p>
-        </div>
-
-        <div class="footer-col">
-          <h4>Navigation</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#features">Features</a></li>
-            <li><a href="index.html#telemetry">Telemetry</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Support</h4>
-          <ul>
-            <li><a href="mailto:support@udittandon.com">Email Support</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div>© 2026 DebtFreeIn (com.udittandon.debtfree). All rights reserved.</div>
-      </div>
+  <footer class="border-t border-black/5 dark:border-white/10 bg-black/5 dark:bg-black/40 py-12">
+    <div class="max-w-7xl mx-auto px-4 text-center text-xs text-brand-textLight dark:text-brand-textDark">
+      © 2026 DebtFreeIn Platform. All rights reserved.
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+  </script>
 </body>
 </html>

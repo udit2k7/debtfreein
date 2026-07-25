@@ -1,263 +1,432 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DebtFreeIn | Autonomous Trading & Virtual Execution Platform</title>
-  <meta name="description" content="DebtFreeIn is a state-of-the-art algorithmic trading and cognitive paper trading platform with Upstox V3 integration, real-time telemetry, and automated risk controls.">
-  <meta name="keywords" content="DebtFreeIn, Algorithmic Trading, Upstox OAuth, Virtual Ledger, Paper Trading, Quantitative Finance, ATR Risk Controls">
-  <link rel="stylesheet" href="styles.css">
+  <title>DebtFreeIn | Autonomous Quantitative Trading Engine</title>
+  <meta name="description" content="DebtFreeIn is an institutional-grade autonomous algorithmic trading platform powered by Dual-Brain AI validation, Upstox API v2 integration, and strict 1% risk management.">
   <link rel="icon" type="image/png" href="./ic_phone_logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              dark: '#0B0F19',
+              light: '#FFFFFF',
+              cardDark: '#1F2937',
+              cardLight: '#FFFFFF',
+              accent: '#00E5FF',
+              textDark: '#9CA3AF',
+              textLight: '#4B5563',
+              headingDark: '#F9FAFB',
+              headingLight: '#1E1E24'
+            }
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
-  <div class="bg-grid-pattern"></div>
+<body class="bg-brand-light dark:bg-brand-dark text-brand-textLight dark:text-brand-textDark font-sans transition-colors duration-300 antialiased selection:bg-brand-accent selection:text-black">
 
-  <!-- Site Navigation -->
-  <header class="site-header">
-    <div class="container nav-wrapper">
-      <a href="index.html" class="brand-logo">
-        <img src="./ic_phone_logo.png" alt="DebtFreeIn Logo">
-        <span>DebtFreeIn</span>
-        <span class="brand-badge app-version-tag">v1.1.3</span>
+  <!-- SECTION A: Navigation Header -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-[#0B0F19]/80 border-b border-black/5 dark:border-white/10 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-brand-accent/10 border border-brand-accent/30 flex items-center justify-center p-1.5 transition-transform duration-300 group-hover:scale-105">
+          <img src="./ic_phone_logo.png" alt="DebtFreeIn Logo" class="w-full h-full object-contain">
+        </div>
+        <div class="flex flex-col">
+          <span class="font-extrabold text-xl text-brand-headingLight dark:text-brand-headingDark tracking-tight">DebtFreeIn</span>
+          <span class="text-[10px] font-mono font-semibold tracking-widest text-brand-accent uppercase">Quant Engine</span>
+        </div>
       </a>
 
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+      <!-- Center Links -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+        <a href="index.html" class="text-brand-headingLight dark:text-brand-headingDark font-semibold">Home</a>
+        <a href="engine.html" class="hover:text-brand-accent transition-colors duration-200">Engine</a>
+        <a href="#performance" class="hover:text-brand-accent transition-colors duration-200">Performance</a>
+        <a href="#faqs" class="hover:text-brand-accent transition-colors duration-200">FAQs</a>
+      </nav>
 
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="#features" class="nav-link">Platform Features</a></li>
-        <li><a href="#telemetry" class="nav-link">Live Telemetry</a></li>
-        <li><a href="#architecture" class="nav-link">Security & Specs</a></li>
-        <li><a href="privacy.html" class="nav-link">Privacy Policy</a></li>
-        <li><a href="terms.html" class="nav-link">Terms of Use</a></li>
-      </ul>
+      <!-- Right Actions: Theme Toggle + CTA -->
+      <div class="flex items-center space-x-4">
+        <!-- Theme Toggle Button -->
+        <button id="themeToggle" class="p-2.5 rounded-xl border border-black/10 dark:border-white/10 text-brand-headingLight dark:text-brand-headingDark hover:bg-black/5 dark:hover:bg-white/5 transition-all duration-300" aria-label="Toggle Theme">
+          <!-- Sun Icon (Dark Mode active) -->
+          <svg id="sunIcon" class="w-5 h-5 hidden dark:block text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <!-- Moon Icon (Light Mode active) -->
+          <svg id="moonIcon" class="w-5 h-5 block dark:hidden text-brand-headingLight" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
 
-      <div class="nav-actions">
-        <a href="#download" class="btn btn-primary">Get Beta Access</a>
+        <!-- CTA Button -->
+        <a href="#access" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-brand-accent text-black hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all duration-300 hover:-translate-y-0.5">
+          Get Access
+        </a>
       </div>
     </div>
   </header>
 
-  <main>
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="container">
-        <div class="hero-pill">
-          <span class="pulse-dot"></span>
-          <span>Official Upstox OAuth V3 Integration Certified</span>
+  <!-- SECTION B: Hero Section -->
+  <section class="py-20 md:py-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Left Content -->
+      <div class="flex flex-col space-y-6">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-brand-accent/30 bg-brand-accent/10 text-brand-accent text-xs font-mono font-semibold w-fit">
+          <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+          <span>UPSTOX API V2 CERTIFIED ARCHITECTURE</span>
         </div>
 
-        <h1 class="hero-title">
-          Autonomous Trading & <br>
-          <span class="text-gradient">Virtual Execution Platform</span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-brand-headingLight dark:text-brand-headingDark leading-[1.1]">
+          Autonomous Quantitative <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent via-cyan-300 to-blue-400">Trading Engine.</span>
         </h1>
 
-        <p class="hero-subtitle">
-          DebtFreeIn combines cognitive paper trading, dynamic ATR risk guardrails, dual-device failover handoff, and direct Upstox V3 execution into a unified Android architecture.
+        <p class="text-base sm:text-lg text-brand-textLight dark:text-brand-textDark font-normal leading-relaxed max-w-xl">
+          DebtFreeIn eliminates emotional vulnerability through Dual-Brain AI Validation (Groq + DeepSeek R1 CRO) and Murphy Technical Confluence. Experience institutional risk controls with automated 1% position sizing.
         </p>
 
-        <div class="hero-cta-group" id="download">
-          <a href="#" class="btn btn-primary">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
-            Download Beta APK (v1.1.3)
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+          <a href="engine.html" class="px-8 py-4 rounded-xl font-bold text-center bg-brand-accent text-black hover:shadow-[0_0_25px_rgba(0,229,255,0.5)] transition-all duration-300 hover:-translate-y-1">
+            Explore Dual-Brain Architecture →
           </a>
-          <a href="#" class="btn btn-secondary">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.55.45-1 1-1h16c.55 0 1 .45 1 1v17l-9-4-9 4z"/></svg>
-            Google Play Internal Testing
+          <a href="#performance" class="px-8 py-4 rounded-xl font-semibold text-center border border-black/10 dark:border-white/10 text-brand-headingLight dark:text-brand-headingDark hover:bg-black/5 dark:hover:bg-white/5 transition-all duration-300">
+            View Live Performance
           </a>
         </div>
-
-        <div class="hero-meta">
-          <div class="hero-meta-item">
-            <svg width="16" height="16" fill="var(--accent-emerald)" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            <span>Target SDK 35 Compliant</span>
-          </div>
-          <div class="hero-meta-item">
-            <svg width="16" height="16" fill="var(--accent-cyan)" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-            <span>AES-256 Encrypted Key Vault</span>
-          </div>
-          <div class="hero-meta-item">
-            <svg width="16" height="16" fill="var(--accent-indigo)" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-            <span>Zero Data Monetization</span>
-          </div>
-        </div>
       </div>
-    </section>
 
-    <!-- Feature Grid Section -->
-    <section class="features-section" id="features">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">ENGINE ARCHITECTURE</span>
-          <h2 class="section-title">Built for Quantitative Precision & High Availability</h2>
-          <p class="section-desc">Designed with enterprise-grade financial guardrails to eliminate emotional execution errors and enforce disciplined risk management.</p>
-        </div>
-
-        <div class="grid-3">
-          <div class="feature-card">
-            <div class="feature-icon">📊</div>
-            <h3>Real-time Telemetry Dashboard</h3>
-            <p>Live session monitoring tracking daily PnL, open position exposure, round-trip caps, and dynamic active tripwires streamed directly to Firestore.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">⚡</div>
-            <h3>Dynamic ATR Risk Controls</h3>
-            <p>Automated volatility protection with 20% max tradeable capital drawdown kill-switches and automated position square-off protocols.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">📱</div>
-            <h3>Dual-Device Failover Guard</h3>
-            <p>Cross-phone high-availability observation node. Missed heartbeats trigger automated takeover prompts to ensure zero execution downtime.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">🔐</div>
-            <h3>Secure Cloud Key Vault</h3>
-            <p>End-to-end encrypted storage of Upstox API credentials using Android Keystore MasterKeys and EncryptedSharedPreferences.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">🧪</div>
-            <h3>Cognitive Paper Trading</h3>
-            <p>Simulate intraday trades against realistic virtual ledgers with 0.05% slippage penalties and detailed Gemini AI post-mortem reports.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">🔄</div>
-            <h3>Robust OAuth 302 Interceptor</h3>
-            <p>Custom WebView client with immediate 302 redirect hijacking to seamlessly capture authorization tokens without spawning external popups.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Live Telemetry Section -->
-    <section class="telemetry-section" id="telemetry">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">LIVE ENGINE SIMULATION</span>
-          <h2 class="section-title">Real-Time Telemetry Monitor</h2>
-          <p class="section-desc">Interactive preview of the DebtFreeIn execution engine state and background event logs.</p>
-        </div>
-
-        <div class="telemetry-wrapper">
-          <div class="telemetry-header">
-            <div class="terminal-dots">
-              <span class="dot dot-red"></span>
-              <span class="dot dot-yellow"></span>
-              <span class="dot dot-green"></span>
+      <!-- Right Card Display (Interactive Preview) -->
+      <div class="relative">
+        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-brand-accent/40 to-blue-600/40 blur-xl opacity-50"></div>
+        <div class="relative bg-brand-cardLight dark:bg-brand-cardDark border border-black/5 dark:border-white/10 rounded-2xl p-6 sm:p-8 shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <!-- Terminal Header -->
+          <div class="flex items-center justify-between pb-6 border-b border-black/10 dark:border-white/10">
+            <div class="flex items-center space-x-2">
+              <span class="w-3 h-3 rounded-full bg-red-500"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+              <span class="w-3 h-3 rounded-full bg-green-500"></span>
+              <span class="text-xs font-mono text-brand-textLight dark:text-brand-textDark ml-2">cloud_quant_engine.py</span>
             </div>
-            <div class="telemetry-title">engine_telemetry_node_01.kt • System Active</div>
-            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-emerald);">● LIVE FEED</div>
+            <span class="px-2.5 py-1 rounded bg-green-500/10 text-green-400 font-mono text-xs font-bold border border-green-500/20">LIVE CLOUD</span>
           </div>
 
-          <div class="telemetry-body">
-            <div class="telemetry-metrics-grid">
-              <div class="metric-box">
-                <div class="metric-label">Live Session PnL</div>
-                <div class="metric-val" id="telemetryPnl">+₹1,250.00</div>
-              </div>
-              <div class="metric-box">
-                <div class="metric-label">Execution Guard State</div>
-                <div class="metric-val neutral">ACTIVE</div>
-              </div>
-              <div class="metric-box">
-                <div class="metric-label">Daily Round-Trips</div>
-                <div class="metric-val indigo">2 / 5 Max</div>
-              </div>
-              <div class="metric-box">
-                <div class="metric-label">Active Tripwire</div>
-                <div class="metric-val neutral" style="font-size: 1.1rem; line-height: 1.4;">ATR(14) Nominal</div>
-              </div>
+          <!-- Execution Metrics Mockup -->
+          <div class="mt-6 space-y-4 font-mono text-xs">
+            <div class="flex justify-between items-center p-3 rounded-xl bg-black/5 dark:bg-black/30">
+              <span class="text-brand-textLight dark:text-brand-textDark">Target Universe</span>
+              <span class="text-brand-headingLight dark:text-brand-headingDark font-bold">20 Bluechip NSE Stocks</span>
             </div>
-
-            <div class="telemetry-console" id="telemetryConsole">
-              <div class="console-line"><span class="ts">[21:33:02]</span> <span class="tag">[SYSTEM]</span> Upstox OAuth V3 Session Validated. Token Active.</div>
-              <div class="console-line"><span class="ts">[21:33:00]</span> <span class="tag">[RISK_GUARD]</span> Capital Allocation Limit: ₹100,000. Target PnL: ₹5,000.</div>
-              <div class="console-line"><span class="ts">[21:32:45]</span> <span class="tag">[TELEMETRY]</span> Executed BUY RELIANCE x10 @ ₹2400.00 (Slippage: 0.05%)</div>
-              <div class="console-line"><span class="ts">[21:32:10]</span> <span class="tag">[HEARTBEAT]</span> Cross-device observer node 100% synchronized.</div>
+            <div class="flex justify-between items-center p-3 rounded-xl bg-black/5 dark:bg-black/30">
+              <span class="text-brand-textLight dark:text-brand-textDark">Risk Model</span>
+              <span class="text-brand-accent font-bold">1.0% Capital Risk (Max ₹10,000)</span>
+            </div>
+            <div class="flex justify-between items-center p-3 rounded-xl bg-black/5 dark:bg-black/30">
+              <span class="text-brand-textLight dark:text-brand-textDark">Confluence Gate</span>
+              <span class="text-brand-headingLight dark:text-brand-headingDark font-bold">VWAP + SMA20 + RSI (50-70)</span>
+            </div>
+            <div class="flex justify-between items-center p-3 rounded-xl bg-black/5 dark:bg-black/30">
+              <span class="text-brand-textLight dark:text-brand-textDark">Triple-Veto Status</span>
+              <span class="text-emerald-400 font-bold">Groq (70+) → CRO → Vision (75%)</span>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Architecture & Compliance Section -->
-    <section class="features-section" id="architecture" style="border-top: none;">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">COMPLIANCE & TRANSPARENCY</span>
-          <h2 class="section-title">Strict Privacy & Security Principles</h2>
-          <p class="section-desc">DebtFreeIn is designed with zero tracking, local credential storage, and explicit user-driven broker authorization.</p>
-        </div>
+  <!-- SECTION C: Social Proof Band -->
+  <section class="py-16 bg-black/5 dark:bg-white/[0.02] border-y border-black/5 dark:border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-5xl font-black text-brand-headingLight dark:text-brand-headingDark tracking-tight mb-4">
+        Zero Emotion. <span class="text-brand-accent">100% Mathematical Precision.</span>
+      </h2>
+      <p class="text-sm sm:text-base text-brand-textLight dark:text-brand-textDark max-w-2xl mx-auto">
+        Backtested over 6 months of 15-minute intraday candles across 20 NSE bluechip equities with an institutionally verified win rate.
+      </p>
+    </div>
+  </section>
 
-        <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));">
-          <div class="feature-card">
-            <h3>Google Play Console Compliant</h3>
-            <p>Adheres strictly to target SDK 35 constraints, foreground service declarations, and explicit biometric vault authentication protocols.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Direct Broker Authentication</h3>
-            <p>Upstox API OAuth authorization tokens are generated directly via official Upstox OAuth 2.0 endpoints and encrypted on your local device.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Zero Data Monetization</h3>
-            <p>We do not collect, sell, or transmit financial trade history or API keys to third-party data brokers or external advertisers.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Site Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="brand-logo">
-            <img src="./ic_phone_logo.png" alt="DebtFreeIn Logo">
-            <span>DebtFreeIn</span>
-          </a>
-          <p>Autonomous algorithmic trading, cognitive paper execution, and corporate financial management platform.</p>
-        </div>
-
-        <div class="footer-col">
-          <h4>Platform</h4>
-          <ul>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#telemetry">Telemetry Feed</a></li>
-            <li><a href="#architecture">Security Specs</a></li>
-            <li><a href="#download">Download APK</a></li>
+  <!-- SECTION D: 50/50 Alternating Feature Grids -->
+  <section class="py-24 space-y-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Strip 1: Text Left / Card Right -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="space-y-6">
+          <span class="text-xs font-mono font-bold tracking-widest text-brand-accent uppercase">Dual-Brain Engine</span>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-brand-headingLight dark:text-brand-headingDark tracking-tight">
+            Groq Llama 3.3 Momentum + DeepSeek R1 CRO Validation
+          </h3>
+          <p class="text-brand-textLight dark:text-brand-textDark leading-relaxed">
+            Every candidate setup is generated by Groq fast momentum screening and then vetted by DeepSeek R1 Chief Risk Officer logic before trade execution.
+          </p>
+          <ul class="space-y-3 font-medium text-sm">
+            <li class="flex items-center space-x-3 text-brand-headingLight dark:text-brand-headingDark">
+              <svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span>Groq 70+ Conviction Screening Gate</span>
+            </li>
+            <li class="flex items-center space-x-3 text-brand-headingLight dark:text-brand-headingDark">
+              <svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span>DeepSeek R1 CRO Risk Veto & Circuit Protection</span>
+            </li>
           </ul>
         </div>
 
-        <div class="footer-col">
-          <h4>Legal & Privacy</h4>
-          <ul>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-            <li><a href="terms.html#disclaimer">Risk Disclaimer</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Support & Contact</h4>
-          <ul>
-            <li><a href="mailto:support@udittandon.com">Contact Support</a></li>
-            <li><a href="https://upstox.com" target="_blank" rel="noopener">Upstox Developer Portal</a></li>
-            <li><a href="privacy.html#data-handling">Data Handling FAQs</a></li>
-          </ul>
+        <div class="bg-brand-cardLight dark:bg-brand-cardDark border border-black/5 dark:border-white/10 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+          <div class="space-y-4 font-mono text-xs">
+            <div class="p-4 rounded-xl bg-brand-accent/10 border border-brand-accent/20 text-brand-accent font-bold">
+              [STAGE 1] Groq Llama 3.3-70B: BUY Signal Generated (Conviction 85%)
+            </div>
+            <div class="p-4 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 font-bold">
+              [STAGE 2] DeepSeek R1 CRO: Risk Veto Approved (1:2.4 R:R Ratio)
+            </div>
+            <div class="p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 font-bold">
+              [STAGE 3] Multimodal Vision: Candlestick Pattern Confirmed (82%)
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <div>© 2026 DebtFreeIn (com.udittandon.debtfree). All rights reserved.</div>
-        <div>Designed for High-Performance Quantitative Execution</div>
+      <!-- Strip 2: Reversed (Card Left / Text Right) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center pt-16">
+        <div class="order-2 lg:order-1 bg-brand-cardLight dark:bg-brand-cardDark border border-black/5 dark:border-white/10 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+          <div class="space-y-4">
+            <div class="flex justify-between text-xs font-mono">
+              <span class="text-brand-textLight dark:text-brand-textDark">Position PnL</span>
+              <span class="text-emerald-400 font-bold">+1.25%</span>
+            </div>
+            <div class="w-full bg-black/10 dark:bg-white/10 h-2 rounded-full overflow-hidden">
+              <div class="bg-brand-accent h-full w-[65%]"></div>
+            </div>
+            <p class="text-xs font-mono text-brand-accent">
+              ⚡ STRIKE PROTECTION ACTIVATED: Stop-Loss moved to Breakeven (₹2,930.00)
+            </p>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2 space-y-6">
+          <span class="text-xs font-mono font-bold tracking-widest text-brand-accent uppercase">Automated Execution</span>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-brand-headingLight dark:text-brand-headingDark tracking-tight">
+            1.0% Trailing Stop Breakeven Lock & Auto-Exits
+          </h3>
+          <p class="text-brand-textLight dark:text-brand-textDark leading-relaxed">
+            As soon as an open position hits +1.0% PnL, the engine automatically moves the stop-loss to breakeven, eliminating downside risk while allowing target gains to compound.
+          </p>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- SECTION E: Bento Grid (4 Columns) -->
+  <section id="performance" class="py-24 bg-black/5 dark:bg-white/[0.02]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-black text-brand-headingLight dark:text-brand-headingDark tracking-tight">
+          Institutional Risk Architecture
+        </h2>
+        <p class="text-sm sm:text-base text-brand-textLight dark:text-brand-textDark mt-3">
+          Built on rigid quantitative rules to preserve equity across all market conditions.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Bento 1 -->
+        <div class="bg-brand-cardLight dark:bg-brand-cardDark border border-black/5 dark:border-white/10 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-brand-accent/10 border border-brand-accent/30 flex items-center justify-center text-brand-accent font-bold text-xl mb-6">
+            1%
+          </div>
+          <h4 class="text-lg font-bold text-brand-headingLight dark:text-brand-headingDark mb-2">1% Risk Sizing</h4>
+          <p class="text-sm text-brand-textLight dark:text-brand-textDark leading-relaxed">
+            Dynamic position sizing caps maximum risk per setup to ₹10,000 on a ₹1,000,000 portfolio.
+          </p>
+        </div>
+
+        <!-- Bento 2 -->
+        <div class="bg-brand-cardLight dark:bg-brand-cardDark border border-black/5 dark:border-white/10 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-brand-accent/10 border border-brand-accent/30 flex items-center justify-center text-brand-accent font-bold text-xl mb-6">
+            1:2
+          </div>
+          <h4 class="text-lg font-bold text-brand-headingLight dark:text-brand-headingDark mb-2">1:2 R:R Requirement</h4>
+          <p class="text-sm text-brand-textLight dark:text-brand-textDark leading-relaxed">
+            Setups must offer at least 2 units of potential reward for every 1 unit of risk, or output HOLD.
+          </p>
+        </div>
+
+        <!-- Bento 3 -->
+        <div class="bg-brand-cardLight dark:bg-brand-cardDark border border-black/5 dark:border-white/10 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-brand-accent/10 border border-brand-accent/30 flex items-center justify-center text-brand-accent font-bold text-xl mb-6">
+            Fib
+          </div>
+          <h4 class="text-lg font-bold text-brand-headingLight dark:text-brand-headingDark mb-2">Murphy Confluence</h4>
+          <p class="text-sm text-brand-textLight dark:text-brand-textDark leading-relaxed">
+            VWAP baseline, SMA20/50 alignment, RSI 50-70, and 0.500 Fibonacci retracement support.
+          </p>
+        </div>
+
+        <!-- Bento 4 -->
+        <div class="bg-brand-cardLight dark:bg-brand-cardDark border border-black/5 dark:border-white/10 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-brand-accent/10 border border-brand-accent/30 flex items-center justify-center text-brand-accent font-bold text-xl mb-6">
+            API
+          </div>
+          <h4 class="text-lg font-bold text-brand-headingLight dark:text-brand-headingDark mb-2">Upstox API v2</h4>
+          <p class="text-sm text-brand-textLight dark:text-brand-textDark leading-relaxed">
+            Direct REST integration for live institutional quotes, intraday candles, and automated order routing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION F: Bottom Anchor (Newsletter & FAQs) -->
+  <section id="faqs" class="py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      <!-- Newsletter Input -->
+      <div id="access" class="bg-brand-cardLight dark:bg-brand-cardDark border border-black/5 dark:border-white/10 rounded-2xl p-8 text-center space-y-6 shadow-sm">
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-brand-headingLight dark:text-brand-headingDark">
+          Get Beta Access to Quant Signals
+        </h3>
+        <p class="text-sm text-brand-textLight dark:text-brand-textDark max-w-lg mx-auto">
+          Subscribe to receive verified AI cloud trade signals and algorithmic execution updates.
+        </p>
+        <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Beta access subscription request received.');">
+          <input type="email" placeholder="Enter your email" required class="flex-1 px-4 py-3 rounded-xl bg-black/5 dark:bg-black/40 border border-black/10 dark:border-white/10 text-brand-headingLight dark:text-brand-headingDark text-sm focus:outline-none focus:border-brand-accent">
+          <button type="submit" class="px-6 py-3 rounded-xl font-bold bg-brand-accent text-black hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all duration-300">
+            Subscribe
+          </button>
+        </form>
+      </div>
+
+      <!-- FAQ Accordions -->
+      <div class="space-y-4">
+        <h3 class="text-2xl font-extrabold text-brand-headingLight dark:text-brand-headingDark text-center mb-8">
+          Frequently Asked Questions
+        </h3>
+
+        <!-- FAQ 1 -->
+        <div class="border border-black/5 dark:border-white/10 rounded-2xl bg-brand-cardLight dark:bg-brand-cardDark overflow-hidden">
+          <button onclick="toggleFaq('faq1')" class="w-full p-6 text-left flex justify-between items-center font-bold text-brand-headingLight dark:text-brand-headingDark">
+            <span>How does the Dual-Brain AI Validation system work?</span>
+            <svg id="icon-faq1" class="w-5 h-5 transform transition-transform duration-300 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="faq1" class="hidden p-6 pt-0 text-sm text-brand-textLight dark:text-brand-textDark leading-relaxed border-t border-black/5 dark:border-white/5">
+            Groq Llama 3.3 screens screened candidates for momentum setups with a minimum conviction threshold of 70. Approved trade tickets are passed to DeepSeek R1 acting as Chief Risk Officer (CRO) to evaluate risk reward ratios and macro conditions before execution.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="border border-black/5 dark:border-white/10 rounded-2xl bg-brand-cardLight dark:bg-brand-cardDark overflow-hidden">
+          <button onclick="toggleFaq('faq2')" class="w-full p-6 text-left flex justify-between items-center font-bold text-brand-headingLight dark:text-brand-headingDark">
+            <span>Is the Upstox OAuth V3 Integration live?</span>
+            <svg id="icon-faq2" class="w-5 h-5 transform transition-transform duration-300 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="faq2" class="hidden p-6 pt-0 text-sm text-brand-textLight dark:text-brand-textDark leading-relaxed border-t border-black/5 dark:border-white/5">
+            Yes. The app connects directly via Upstox API v2 OAuth flow, syncing tokens to Firestore (`system_config/upstox_auth`) to allow both live paper trading and live broker order routing.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="border border-black/5 dark:border-white/10 rounded-2xl bg-brand-cardLight dark:bg-brand-cardDark overflow-hidden">
+          <button onclick="toggleFaq('faq3')" class="w-full p-6 text-left flex justify-between items-center font-bold text-brand-headingLight dark:text-brand-headingDark">
+            <span>What is the 1% Risk Sizing Rule?</span>
+            <svg id="icon-faq3" class="w-5 h-5 transform transition-transform duration-300 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="faq3" class="hidden p-6 pt-0 text-sm text-brand-textLight dark:text-brand-textDark leading-relaxed border-t border-black/5 dark:border-white/5">
+            The quantitative engine dynamically calculates share quantity so that if the stop-loss is hit, maximum loss is strictly capped at 1% of total portfolio equity (₹10,000 on a ₹1,000,000 account).
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION G: Footer -->
+  <footer class="border-t border-black/5 dark:border-white/10 bg-black/5 dark:bg-black/40 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10">
+      <!-- Col 1: Brand -->
+      <div class="space-y-4">
+        <div class="flex items-center gap-3">
+          <img src="./ic_phone_logo.png" alt="DebtFreeIn Logo" class="w-8 h-8 object-contain">
+          <span class="font-extrabold text-lg text-brand-headingLight dark:text-brand-headingDark">DebtFreeIn</span>
+        </div>
+        <p class="text-xs text-brand-textLight dark:text-brand-textDark leading-relaxed">
+          Autonomous algorithmic trading, cognitive paper execution, and corporate quantitative finance platform.
+        </p>
+      </div>
+
+      <!-- Col 2: Product -->
+      <div>
+        <h5 class="text-xs font-mono font-bold text-brand-headingLight dark:text-brand-headingDark uppercase tracking-wider mb-4">Product</h5>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="engine.html" class="hover:text-brand-accent transition-colors">Quant Engine</a></li>
+          <li><a href="#performance" class="hover:text-brand-accent transition-colors">Risk Controls</a></li>
+          <li><a href="index.html#access" class="hover:text-brand-accent transition-colors">Beta Access</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Legal -->
+      <div>
+        <h5 class="text-xs font-mono font-bold text-brand-headingLight dark:text-brand-headingDark uppercase tracking-wider mb-4">Legal</h5>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="privacy.html" class="hover:text-brand-accent transition-colors">Privacy Policy</a></li>
+          <li><a href="terms.html" class="hover:text-brand-accent transition-colors">Terms of Use</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Resources -->
+      <div>
+        <h5 class="text-xs font-mono font-bold text-brand-headingLight dark:text-brand-headingDark uppercase tracking-wider mb-4">Resources</h5>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="https://api.upstox.com" target="_blank" class="hover:text-brand-accent transition-colors">Upstox API v2</a></li>
+          <li><a href="https://modal.com" target="_blank" class="hover:text-brand-accent transition-colors">Modal Cloud</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-black/5 dark:border-white/5 text-center text-xs text-brand-textLight dark:text-brand-textDark">
+      © 2026 DebtFreeIn Platform. All rights reserved. SEBI / Stock Broker Disclaimer: Quantitative paper trading & automated signals are for educational purposes.
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Inline Script for Theme Toggle & FAQ Accordion -->
+  <script>
+    // Dark Mode Toggle Logic
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    // FAQ Accordion Toggle Logic
+    function toggleFaq(id) {
+      const el = document.getElementById(id);
+      const icon = document.getElementById('icon-' + id);
+      if (el.classList.contains('hidden')) {
+        el.classList.remove('hidden');
+        if (icon) icon.classList.add('rotate-180');
+      } else {
+        el.classList.add('hidden');
+        if (icon) icon.classList.remove('rotate-180');
+      }
+    }
+  </script>
 </body>
 </html>
