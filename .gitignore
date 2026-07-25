@@ -1,0 +1,16 @@
+# Android & Gradle
+.gradle/
+.idea/
+app/build/
+build/
+*.iml
+local.properties
+resources.txt
+
+# Firebase Security
+google-services.json
+app/google-services.json
+
+# Build Artifacts
+*.apk
+*.aab
