@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy | DebtFreeIn Platform</title>
-  <meta name="description" content="DebtFreeIn Privacy Policy detailing data handling, local encryption, Firebase authentication, and Upstox API token usage.">
+  <meta name="description" content="DebtFreeIn Privacy Policy detailing data handling, user privacy, third-party processors, and Google Play data deletion compliance.">
   <link rel="icon" type="image/png" href="./ic_phone_logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -76,30 +76,87 @@
   </header>
 
   <!-- Policy Body -->
-  <main class="py-20">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-      <h1 class="text-4xl font-black text-brand-headingLight dark:text-brand-headingDark">Privacy Policy</h1>
-      <p class="text-sm font-mono text-brand-accent">Effective Date: May 1, 2026</p>
+  <main class="py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <div class="border-b border-black/10 dark:border-white/10 pb-8 space-y-3">
+        <h1 class="text-3xl sm:text-4xl font-black text-brand-headingLight dark:text-brand-headingDark tracking-tight">Privacy Policy</h1>
+        <p class="text-sm font-mono text-brand-accent">Last Updated: July 26, 2026</p>
+      </div>
 
-      <div class="space-y-6 text-sm leading-relaxed">
-        <section class="space-y-2">
-          <h2 class="text-lg font-bold text-brand-headingLight dark:text-brand-headingDark">1. Information Collection & Storage</h2>
+      <div class="space-y-8 text-base leading-relaxed">
+        <!-- 1. Introduction -->
+        <section class="space-y-4">
+          <h2 class="text-xl font-bold text-brand-headingLight dark:text-brand-headingDark">1. Introduction</h2>
           <p>
-            DebtFreeIn operates with privacy-by-design. Sensitive credentials (such as Upstox OAuth Access Tokens and API Keys) are stored securely using Android EncryptedSharedPreferences and synced to isolated Firebase Firestore documents (`system_config/upstox_auth`) solely for background execution.
+            DebtFreeIn ("we," "our," or "us") respects your privacy and is committed to protecting it through our compliance with this policy. This Privacy Policy describes the types of information we may collect from you or that you may provide when you visit the DebtFreeIn website or use the mobile application, and our practices for collecting, using, maintaining, protecting, and disclosing that information.
           </p>
         </section>
 
-        <section class="space-y-2">
-          <h2 class="text-lg font-bold text-brand-headingLight dark:text-brand-headingDark">2. Financial Data Handling</h2>
+        <!-- 2. Information We Collect -->
+        <section class="space-y-4">
+          <h2 class="text-xl font-bold text-brand-headingLight dark:text-brand-headingDark">2. Information We Collect</h2>
           <p>
-            Virtual paper trading ledgers, expense entries, and credit card calculations remain local to your app database or secure user space. We do not sell or share personal trading history or financial data with third-party advertisers.
+            Because DebtFreeIn is strictly a simulated paper-trading environment, <strong class="text-brand-headingLight dark:text-brand-headingDark">we DO NOT collect sensitive real-world financial data</strong>. We do not ask for, nor do we store, your bank account details, Social Security Numbers, KYC (Know Your Customer) documents, or live brokerage API keys.
+          </p>
+          <p>We may collect the following types of information:</p>
+          <ul class="list-disc pl-6 space-y-2 text-sm text-brand-textLight dark:text-brand-textDark">
+            <li><strong class="text-brand-headingLight dark:text-brand-headingDark">Account Data:</strong> Email address, username, and authentication tokens (managed securely via Google Firebase).</li>
+            <li><strong class="text-brand-headingLight dark:text-brand-headingDark">Simulation Data:</strong> Your paper-trading transaction history, saved AI quantitative strategies, simulated portfolio balances, and interactions with the AI models.</li>
+            <li><strong class="text-brand-headingLight dark:text-brand-headingDark">Device and Usage Data:</strong> IP addresses, device identifiers, operating system types, app crash reports, and analytics data regarding how you navigate the application to help us improve performance.</li>
+          </ul>
+        </section>
+
+        <!-- 3. How We Use Your Information -->
+        <section class="space-y-4">
+          <h2 class="text-xl font-bold text-brand-headingLight dark:text-brand-headingDark">3. How We Use Your Information</h2>
+          <p>We use the information we collect strictly to operate the simulation engine and provide the services described:</p>
+          <ul class="list-disc pl-6 space-y-2 text-sm text-brand-textLight dark:text-brand-textDark">
+            <li>To create and maintain your simulated trading account.</li>
+            <li>To process and display your simulated trades and AI engine interactions.</li>
+            <li>To improve our algorithms, user interface, and overall user experience.</li>
+            <li>To monitor for technical anomalies, crashes, and unauthorized usage.</li>
+            <li>To comply with legal obligations and enforce our Terms and Conditions.</li>
+          </ul>
+        </section>
+
+        <!-- 4. Third-Party Data Processors -->
+        <section class="space-y-4">
+          <h2 class="text-xl font-bold text-brand-headingLight dark:text-brand-headingDark">4. Third-Party Data Processors</h2>
+          <p>To operate the Platform, we share necessary technical data with trusted third-party infrastructure providers. These include:</p>
+          <ul class="list-disc pl-6 space-y-2 text-sm text-brand-textLight dark:text-brand-textDark">
+            <li><strong class="text-brand-headingLight dark:text-brand-headingDark">Google Firebase & Google Cloud:</strong> Used for secure database hosting, user authentication, and crash analytics.</li>
+            <li><strong class="text-brand-headingLight dark:text-brand-headingDark">AI Service Providers (e.g., Google Gemini):</strong> Used to process the quantitative logic and chat prompts. <em>Note: We do not send personally identifiable information (PII) to AI models; only the required market parameters for simulation.</em></li>
+          </ul>
+          <p>We DO NOT sell, rent, or lease your personal information to third-party marketers or data brokers.</p>
+        </section>
+
+        <!-- 5. Data Security -->
+        <section class="space-y-4">
+          <h2 class="text-xl font-bold text-brand-headingLight dark:text-brand-headingDark">5. Data Security</h2>
+          <p>
+            We have implemented measures designed to secure your personal information from accidental loss and from unauthorized access, use, alteration, and disclosure. All information you provide to us is stored on our secure servers behind firewalls, utilizing industry-standard encryption protocols. However, the transmission of information via the internet is not completely secure, and we cannot guarantee the absolute security of your personal information transmitted to our app.
           </p>
         </section>
 
-        <section class="space-y-2">
-          <h2 class="text-lg font-bold text-brand-headingLight dark:text-brand-headingDark">3. Third-Party Integrations</h2>
+        <!-- 6. Google Play Store Compliance and User Deletion Rights -->
+        <section class="space-y-4">
+          <h2 class="text-xl font-bold text-brand-headingLight dark:text-brand-headingDark">6. Google Play Store Compliance and User Deletion Rights</h2>
           <p>
-            Market data and execution orders are routed through official Upstox API v2 endpoints. Artificial intelligence reasoning is processed by Groq Llama 3.3 and DeepSeek R1 models via encrypted API requests.
+            In strict accordance with Google Play Store policies, users maintain full control over their data. You have the right to request the complete deletion of your account and all associated personal data.
+          </p>
+          <div class="p-5 rounded-2xl bg-brand-accent/10 border border-brand-accent/30 space-y-3">
+            <h3 class="font-bold text-base text-brand-headingLight dark:text-brand-headingDark">How to Delete Your Data</h3>
+            <p class="text-sm leading-relaxed">
+              Users may delete their account directly within the DebtFreeIn application by navigating to <strong>Settings &gt; Account &gt; Delete Account</strong>. Alternatively, users may submit a verifiable data deletion request by contacting our support team at <a href="mailto:support@debtfreein.app" class="text-brand-accent underline">support@debtfreein.app</a>. Upon request, all personal identifiers, simulated trading histories, and account credentials will be permanently erased from our active databases, except where retention is required by law.
+            </p>
+          </div>
+        </section>
+
+        <!-- 7. Changes to Our Privacy Policy -->
+        <section class="space-y-4">
+          <h2 class="text-xl font-bold text-brand-headingLight dark:text-brand-headingDark">7. Changes to Our Privacy Policy</h2>
+          <p>
+            We reserve the right to update or change our Privacy Policy at any time. Any changes will be posted on this page with an updated "Last Updated" date. Your continued use of the Platform after we make changes is deemed to be acceptance of those changes.
           </p>
         </section>
       </div>
