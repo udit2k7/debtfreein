@@ -27,7 +27,6 @@ if (localPropertiesFile.exists()) {
 }
 
 val geminiApiKey = localProperties.getProperty("GEMINI_API_KEY") ?: "\"YOUR_KEY_HERE\""
-val marketDataApiKey = localProperties.getProperty("MARKET_DATA_API_KEY") ?: "\"YOUR_KEY_HERE\""
 
 android {
     namespace = "com.debtfreein.app"
@@ -46,7 +45,6 @@ android {
         }
 
         buildConfigField("String", "GEMINI_API_KEY", geminiApiKey)
-        buildConfigField("String", "MARKET_DATA_API_KEY", marketDataApiKey)
     }
 
     buildTypes {
