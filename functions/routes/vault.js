@@ -5,31 +5,41 @@ const { verifyToken } = require('../middleware/auth');
 
 /**
  * POST /vault/upstox
- * Securely stores user's Upstox Access Token & credentials in Firestore vault.
- * Path: users/{uid}/vault/broker_keys
+ * Securely stores user's Upstox Access Token in Firestore vault.
+ * Path is strictly bound to req.user.uid (extracted securely from verified ID token):
+ * users/{req.user.uid}/vault/broker_keys
  */
 router.post('/upstox', verifyToken, async (req, res) => {
   const { accessToken, apiKey, apiSecret, broker = 'upstox' } = req.body;
 
-  const tokenToSave = accessToken || apiKey;
+  // Enforce UID extraction strictly from verified ID token
+  const authUid = req.user && req.user.uid;
+  if (!authUid) {
+    return res.status(401).json({
+      error: 'Unauthorized',
+      message: 'Invalid identity context.'
+    });
+  }
+
+  const tokenToSave = (accessToken || apiKey || '').trim();
   if (!tokenToSave) {
     return res.status(400).json({
       error: 'Bad Request',
-      message: 'accessToken (or apiKey) is required.'
+      message: 'AccessToken or ApiKey is required.'
     });
   }
 
   try {
     const vaultRef = admin.firestore()
       .collection('users')
-      .doc(req.user.uid)
+      .doc(authUid) // Strictly uses authenticated UID from verifyToken
       .collection('vault')
       .doc('broker_keys');
 
     const updateData = {
       upstoxAccessToken: tokenToSave,
-      apiKey: apiKey || null,
-      apiSecret: apiSecret || null,
+      apiKey: apiKey ? apiKey.trim() : null,
+      apiSecret: apiSecret ? apiSecret.trim() : null,
       broker,
       updatedAt: Date.now()
     };
@@ -38,29 +48,37 @@ router.post('/upstox', verifyToken, async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      message: 'Upstox broker credentials stored securely in vault.',
+      message: 'Broker credentials stored securely in vault.',
       broker,
       updatedAt: updateData.updatedAt
     });
   } catch (error) {
-    console.error('Error saving to broker vault:', error);
+    console.error('Vault storage error:', error.message);
     return res.status(500).json({
       error: 'Internal Server Error',
-      message: 'Failed to store broker credentials in vault.',
-      details: error.message
+      message: 'Failed to store credentials in vault.'
     });
   }
 });
 
 /**
  * GET /vault/upstox
- * Retrieves current vault status for the authenticated user.
+ * Retrieves vault status for authenticated user.
+ * SECURITY: Never returns the raw token in plaintext to the client.
  */
 router.get('/upstox', verifyToken, async (req, res) => {
+  const authUid = req.user && req.user.uid;
+  if (!authUid) {
+    return res.status(401).json({
+      error: 'Unauthorized',
+      message: 'Invalid identity context.'
+    });
+  }
+
   try {
     const vaultDoc = await admin.firestore()
       .collection('users')
-      .doc(req.user.uid)
+      .doc(authUid)
       .collection('vault')
       .doc('broker_keys')
       .get();
@@ -69,24 +87,33 @@ router.get('/upstox', verifyToken, async (req, res) => {
       return res.status(200).json({
         hasToken: false,
         broker: 'upstox',
-        updatedAt: null
+        updatedAt: null,
+        maskedToken: null
       });
     }
 
     const data = vaultDoc.data();
-    const token = data.upstoxAccessToken || data.apiKey;
+    const token = data.upstoxAccessToken || data.apiKey || '';
+    const hasToken = token.length > 0;
+
+    // Mask token string safely (returns ****-****-1234 format)
+    let maskedToken = null;
+    if (hasToken) {
+      const lastFour = token.slice(-4);
+      maskedToken = `****-****-${lastFour}`;
+    }
+
     return res.status(200).json({
-      hasToken: !!token,
+      hasToken,
       broker: data.broker || 'upstox',
       updatedAt: data.updatedAt || null,
-      maskedToken: token ? `${token.slice(0, 4)}...${token.slice(-4)}` : null
+      maskedToken
     });
   } catch (error) {
-    console.error('Error reading broker vault:', error);
+    console.error('Vault status check error:', error.message);
     return res.status(500).json({
       error: 'Internal Server Error',
-      message: 'Failed to read vault status.',
-      details: error.message
+      message: 'Failed to read vault status.'
     });
   }
 });

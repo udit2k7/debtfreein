@@ -17,7 +17,7 @@ const verifyAdminRole = async (req, res, next) => {
       return next();
     }
   } catch (err) {
-    console.error('Error checking admin role:', err);
+    console.error('Error checking admin role:', err.message);
   }
 
   return res.status(403).json({
@@ -33,17 +33,17 @@ const verifyAdminRole = async (req, res, next) => {
 router.post('/approve-user', verifyToken, verifyAdminRole, async (req, res) => {
   const { targetUid, months = 6 } = req.body;
 
-  if (!targetUid) {
+  if (!targetUid || typeof targetUid !== 'string') {
     return res.status(400).json({
       error: 'Bad Request',
-      message: 'targetUid is required in request body.'
+      message: 'Valid targetUid string is required in request body.'
     });
   }
 
   try {
     const now = Date.now();
     // 6 months calculation (~ 180 days)
-    const durationMs = months * 30 * 24 * 60 * 60 * 1000;
+    const durationMs = Math.min(Math.max(Number(months) || 6, 1), 24) * 30 * 24 * 60 * 60 * 1000;
     const expiryTimestamp = now + durationMs;
 
     const userRef = admin.firestore().collection('users').doc(targetUid);
@@ -56,17 +56,16 @@ router.post('/approve-user', verifyToken, verifyAdminRole, async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      message: `User ${targetUid} approved for ${months} months.`,
+      message: `User approved successfully for specified period.`,
       status: 'active',
       subscription_expiry_date: expiryTimestamp,
       expiryIsoDate: new Date(expiryTimestamp).toISOString()
     });
   } catch (error) {
-    console.error('Error approving user:', error);
+    console.error('Error approving user:', error.message);
     return res.status(500).json({
       error: 'Internal Server Error',
-      message: 'Failed to approve user and update subscription.',
-      details: error.message
+      message: 'Failed to approve user.'
     });
   }
 });
@@ -93,11 +92,10 @@ router.get('/pending-users', verifyToken, verifyAdminRole, async (req, res) => {
       users: pendingUsers
     });
   } catch (error) {
-    console.error('Error fetching pending users:', error);
+    console.error('Error fetching pending users:', error.message);
     return res.status(500).json({
       error: 'Internal Server Error',
-      message: 'Failed to fetch pending users list.',
-      details: error.message
+      message: 'Failed to fetch pending users list.'
     });
   }
 });

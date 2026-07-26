@@ -11,12 +11,38 @@ if (!admin.apps.length) {
 
 const app = express();
 
-// Enable CORS for cross-origin requests
-app.use(cors({ origin: true }));
+// Allowed Origins for CORS (Production Frontend Domain & Local Dev Environments)
+const ALLOWED_ORIGINS = [
+  'https://debtfreein.com',
+  'https://www.debtfreein.com',
+  'https://debtfreein-db.web.app',
+  'https://debtfreein-db.firebaseapp.com',
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'http://127.0.0.1:5173',
+  'http://127.0.0.1:3000'
+];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Allow server-to-server or tools without an origin header (e.g. Postman/Curl during dev)
+    if (!origin) return callback(null, true);
+    if (ALLOWED_ORIGINS.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('CORS Policy: Access denied for this origin.'));
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+};
+
+// Enable Strict CORS Policy
+app.use(cors(corsOptions));
 
 // Body parser middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '10kb' }));
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 // Import routes
 const adminRoutes = require('./routes/admin');
@@ -47,6 +73,21 @@ app.get('/', (req, res) => {
       market: '/market/*',
       vault: '/vault/*'
     }
+  });
+});
+
+// Express Error Handler for CORS & Middleware Exception Catching
+app.use((err, req, res, _next) => {
+  if (err.message && err.message.includes('CORS Policy')) {
+    return res.status(403).json({
+      error: 'Forbidden',
+      message: err.message
+    });
+  }
+  console.error('Unhandled Gateway Exception:', err.message);
+  return res.status(500).json({
+    error: 'Internal Server Error',
+    message: 'An unexpected security condition occurred.'
   });
 });
 

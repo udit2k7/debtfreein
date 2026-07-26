@@ -6,6 +6,7 @@ const { verifyToken, checkSubscription } = require('../middleware/auth');
 
 /**
  * Helper to fetch the stored Upstox access token for a given user from Firestore vault.
+ * Path is strictly scoped to authenticated user's sub-collection.
  */
 async function getUserUpstoxToken(uid) {
   const doc = await admin.firestore()
@@ -22,7 +23,7 @@ async function getUserUpstoxToken(uid) {
 
 /**
  * GET /market/quotes
- * Proxies market quote requests to Upstox API v2.
+ * Proxies market quote requests to Upstox API v2 over HTTPS.
  * Requires: verifyToken, checkSubscription
  */
 router.get('/quotes', verifyToken, checkSubscription, async (req, res) => {
@@ -49,12 +50,14 @@ router.get('/quotes', verifyToken, checkSubscription, async (req, res) => {
       });
     }
 
+    // Strictly enforce HTTPS for external broker API calls
     const upstoxResponse = await axios.get('https://api.upstox.com/v2/market-quote/quotes', {
       params: { instrument_key: targetKey },
       headers: {
         'Accept': 'application/json',
         'Authorization': `Bearer ${upstoxToken}`
-      }
+      },
+      timeout: 10000
     });
 
     return res.status(200).json({
@@ -64,19 +67,26 @@ router.get('/quotes', verifyToken, checkSubscription, async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Error fetching Upstox market quotes:', error.response?.data || error.message);
+    // Sanitized Error Logging: Prevent leaking full Axios error object or request headers (which contain Bearer token)
+    const statusCode = error.response?.status || 500;
+    const upstoxErrorMessage = error.response?.data?.errors?.[0]?.message || 'Failed to fetch market quotes from broker.';
     
-    return res.status(error.response?.status || 500).json({
-      error: 'Upstox Proxy Error',
-      message: error.response?.data?.errors?.[0]?.message || 'Failed to fetch Upstox quotes.',
-      details: error.response?.data || error.message
+    console.error('Market Proxy Request Failed:', {
+      status: statusCode,
+      instrument: targetKey,
+      message: error.message
+    });
+    
+    return res.status(statusCode).json({
+      error: 'Broker Proxy Error',
+      message: upstoxErrorMessage
     });
   }
 });
 
 /**
  * POST /market/order
- * Proxies order placement requests to Upstox API v2 HFT engine.
+ * Proxies order placement requests to Upstox API v2 HFT engine over HTTPS.
  * Requires: verifyToken, checkSubscription
  */
 router.post('/order', verifyToken, checkSubscription, async (req, res) => {
@@ -135,12 +145,14 @@ router.post('/order', verifyToken, checkSubscription, async (req, res) => {
       is_amo: Boolean(is_amo || false)
     };
 
+    // Strictly enforce HTTPS for HFT order placement
     const upstoxResponse = await axios.post('https://api-hft.upstox.com/v2/order/place', payload, {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'Authorization': `Bearer ${upstoxToken}`
-      }
+      },
+      timeout: 10000
     });
 
     return res.status(200).json({
@@ -150,12 +162,19 @@ router.post('/order', verifyToken, checkSubscription, async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Error executing Upstox order:', error.response?.data || error.message);
+    // Sanitized Error Logging: Prevent leaking full Axios error object or request headers
+    const statusCode = error.response?.status || 500;
+    const upstoxErrorMessage = error.response?.data?.errors?.[0]?.message || 'Failed to place order with broker.';
 
-    return res.status(error.response?.status || 500).json({
-      error: 'Upstox Order Execution Error',
-      message: error.response?.data?.errors?.[0]?.message || 'Failed to place order with Upstox.',
-      details: error.response?.data || error.message
+    console.error('Order Execution Request Failed:', {
+      status: statusCode,
+      token: instrument_token,
+      message: error.message
+    });
+
+    return res.status(statusCode).json({
+      error: 'Order Execution Error',
+      message: upstoxErrorMessage
     });
   }
 });

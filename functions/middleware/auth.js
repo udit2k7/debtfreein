@@ -5,26 +5,33 @@ const admin = require('firebase-admin');
  * Expects header format: "Authorization: Bearer <token>"
  */
 const verifyToken = async (req, res, next) => {
-  const authHeader = req.headers.authorization;
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({
-      error: 'Unauthorized',
-      message: 'No Bearer token provided in Authorization header.'
-    });
-  }
-
-  const idToken = authHeader.split('Bearer ')[1].trim();
-
   try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || typeof authHeader !== 'string' || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({
+        error: 'Unauthorized',
+        message: 'No valid Bearer token provided in Authorization header.'
+      });
+    }
+
+    const parts = authHeader.split(' ');
+    if (parts.length !== 2 || !parts[1].trim()) {
+      return res.status(401).json({
+        error: 'Unauthorized',
+        message: 'Malformed Authorization header.'
+      });
+    }
+
+    const idToken = parts[1].trim();
     const decodedToken = await admin.auth().verifyIdToken(idToken);
     req.user = decodedToken;
     return next();
   } catch (error) {
-    console.error('Error verifying Firebase ID token:', error);
+    // Log exception internally without leaking internal stack traces or Firebase internals to client
+    console.error('Authentication verification failure:', error.code || error.message);
     return res.status(401).json({
       error: 'Unauthorized',
-      message: 'Invalid or expired authentication token.',
-      details: error.message
+      message: 'Invalid or expired authentication token.'
     });
   }
 };
@@ -38,7 +45,7 @@ const checkSubscription = async (req, res, next) => {
   if (!req.user || !req.user.uid) {
     return res.status(401).json({
       error: 'Unauthorized',
-      message: 'User authentication required before subscription validation.'
+      message: 'Authentication context missing.'
     });
   }
 
@@ -49,7 +56,7 @@ const checkSubscription = async (req, res, next) => {
     if (!userDoc.exists) {
       return res.status(403).json({
         error: 'Forbidden',
-        message: 'User record not found in system.'
+        message: 'User account record not found.'
       });
     }
 
@@ -59,8 +66,7 @@ const checkSubscription = async (req, res, next) => {
     if (status !== 'active') {
       return res.status(403).json({
         error: 'Forbidden',
-        message: 'Account subscription is not active.',
-        currentStatus: status || 'inactive'
+        message: 'Subscription is not active.'
       });
     }
 
@@ -77,24 +83,21 @@ const checkSubscription = async (req, res, next) => {
     if (!expiryMs || expiryMs < Date.now()) {
       return res.status(403).json({
         error: 'Forbidden',
-        message: 'Subscription has expired.',
-        expiryDate: expiryMs ? new Date(expiryMs).toISOString() : null
+        message: 'Subscription has expired.'
       });
     }
 
     req.subscription = {
       status,
-      expiryMs,
-      userData
+      expiryMs
     };
 
     return next();
   } catch (error) {
-    console.error('Error checking subscription:', error);
+    console.error('Subscription verification exception:', error.message);
     return res.status(500).json({
       error: 'Internal Server Error',
-      message: 'Failed to validate subscription status.',
-      details: error.message
+      message: 'Subscription check failed.'
     });
   }
 };
