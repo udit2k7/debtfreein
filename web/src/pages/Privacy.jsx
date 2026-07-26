@@ -64,16 +64,16 @@ export default function Privacy() {
             </p>
           </section>
 
-          {/* 6. Google Play Store Compliance and User Deletion Rights */}
+          {/* 6. Account and Data Deletion Instructions */}
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-brand-headingLight dark:text-brand-headingDark">6. Google Play Store Compliance and User Deletion Rights</h2>
+            <h2 className="text-xl font-bold text-brand-headingLight dark:text-brand-headingDark">Account and Data Deletion Instructions</h2>
             <p>
-              In strict accordance with Google Play Store policies, users maintain full control over their data. You have the right to request the complete deletion of your account and all associated personal data.
+              In strict accordance with Google Play Store policies and global data privacy standards, users maintain full control over their account and personal data.
             </p>
             <div className="p-5 rounded-2xl bg-brand-accent/10 border border-brand-accent/30 space-y-3">
-              <h3 className="font-bold text-base text-brand-headingLight dark:text-brand-headingDark">How to Delete Your Data</h3>
+              <h3 className="font-bold text-base text-brand-headingLight dark:text-brand-headingDark">How to Request Account &amp; Data Deletion</h3>
               <p className="text-sm leading-relaxed">
-                Users may delete their account directly within the DebtFreeIn application by navigating to <strong>Settings &gt; Account &gt; Delete Account</strong>. Alternatively, users may submit a verifiable data deletion request by contacting our support team at <a href="mailto:support@debtfreein.com" className="text-brand-accent underline">support@debtfreein.com</a>. Upon request, all personal identifiers, simulated trading histories, and account credentials will be permanently erased from our active databases, except where retention is required by law.
+                Users can request account and data deletion by emailing <a href="mailto:support@debtfreein.com" className="text-brand-accent underline">support@debtfreein.com</a>. Upon request, all associated user data (Firestore records, Auth records, simulated portfolio balances, and transaction history) will be permanently wiped within 7 days. You may also delete your account directly within the app under Settings &gt; Account &gt; Delete Account.
               </p>
             </div>
           </section>
