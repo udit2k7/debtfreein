@@ -10,8 +10,11 @@ resources.txt
 # Web & Node
 node_modules/
 web/node_modules/
+functions/node_modules/
 web/dist/
 dist/
+.env
+functions/.env
 
 # Firebase Security
 google-services.json
@@ -26,3 +29,4 @@ app/google-services.json
 *.keystore
 keystore.properties
 app/keystore.properties
+*.pem

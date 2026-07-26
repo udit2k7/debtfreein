@@ -1,0 +1,17 @@
+{
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2021
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "rules": {
+    "no-restricted-globals": ["error", "event"],
+    "prefer-arrow-callback": "error",
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }]
+  }
+}
