@@ -21,6 +21,147 @@ async function getUserUpstoxToken(uid) {
   return data.upstoxAccessToken || data.apiKey || null;
 }
 
+// Strict Enum & Key Allow-lists for Upstox Order Payload
+const ALLOWED_ORDER_KEYS = new Set([
+  'quantity',
+  'product',
+  'validity',
+  'price',
+  'instrument_token',
+  'order_type',
+  'transaction_type',
+  'disclosed_quantity',
+  'trigger_price',
+  'is_amo'
+]);
+
+const ALLOWED_TRANSACTION_TYPES = new Set(['BUY', 'SELL']);
+const ALLOWED_ORDER_TYPES = new Set(['MARKET', 'LIMIT', 'SL', 'SL-M']);
+const ALLOWED_PRODUCTS = new Set(['I', 'D']);
+const ALLOWED_VALIDITY = new Set(['DAY', 'IOC']);
+
+/**
+ * Strict Input Validation Middleware for Upstox v2 Order Requests.
+ */
+const validateUpstoxOrder = (req, res, next) => {
+  if (!req.body || typeof req.body !== 'object') {
+    return res.status(400).json({
+      error: 'Bad Request',
+      message: 'Request body must be a valid JSON object.'
+    });
+  }
+
+  const bodyKeys = Object.keys(req.body);
+
+  // 1. Property Allow-listing: Reject unknown properties
+  for (const key of bodyKeys) {
+    if (!ALLOWED_ORDER_KEYS.has(key)) {
+      return res.status(400).json({
+        error: 'Bad Request',
+        message: `Disallowed property '${key}' in order payload.`
+      });
+    }
+  }
+
+  const {
+    quantity,
+    product,
+    validity,
+    price,
+    instrument_token,
+    order_type,
+    transaction_type,
+    trigger_price
+  } = req.body;
+
+  // 2. Validate transaction_type (strictly BUY or SELL)
+  if (!transaction_type || !ALLOWED_TRANSACTION_TYPES.has(transaction_type)) {
+    return res.status(400).json({
+      error: 'Bad Request',
+      message: "transaction_type must be strictly 'BUY' or 'SELL'."
+    });
+  }
+
+  // 3. Validate order_type (strictly MARKET, LIMIT, SL, SL-M)
+  if (!order_type || !ALLOWED_ORDER_TYPES.has(order_type)) {
+    return res.status(400).json({
+      error: 'Bad Request',
+      message: "order_type must be strictly 'MARKET', 'LIMIT', 'SL', or 'SL-M'."
+    });
+  }
+
+  // 4. Validate product (strictly I for Intraday or D for Delivery)
+  if (!product || !ALLOWED_PRODUCTS.has(product)) {
+    return res.status(400).json({
+      error: 'Bad Request',
+      message: "product must be strictly 'I' (Intraday) or 'D' (Delivery)."
+    });
+  }
+
+  // 5. Validate validity (strictly DAY or IOC)
+  if (!validity || !ALLOWED_VALIDITY.has(validity)) {
+    return res.status(400).json({
+      error: 'Bad Request',
+      message: "validity must be strictly 'DAY' or 'IOC'."
+    });
+  }
+
+  // 6. Validate instrument_token
+  if (!instrument_token || typeof instrument_token !== 'string' || !instrument_token.trim()) {
+    return res.status(400).json({
+      error: 'Bad Request',
+      message: 'instrument_token must be a non-empty string.'
+    });
+  }
+
+  // 7. Validate quantity (strictly positive integer > 0)
+  const numQuantity = Number(quantity);
+  if (!Number.isInteger(numQuantity) || numQuantity <= 0) {
+    return res.status(400).json({
+      error: 'Bad Request',
+      message: 'quantity must be a positive integer greater than 0.'
+    });
+  }
+
+  // 8. Validate price
+  if (price !== undefined && price !== null) {
+    const numPrice = Number(price);
+    if (isNaN(numPrice) || numPrice < 0) {
+      return res.status(400).json({
+        error: 'Bad Request',
+        message: 'price must be a valid non-negative number.'
+      });
+    }
+  }
+
+  if ((order_type === 'LIMIT' || order_type === 'SL') && (!price || Number(price) <= 0)) {
+    return res.status(400).json({
+      error: 'Bad Request',
+      message: `price > 0 is required for order_type '${order_type}'.`
+    });
+  }
+
+  // 9. Validate trigger_price
+  if (trigger_price !== undefined && trigger_price !== null) {
+    const numTrigger = Number(trigger_price);
+    if (isNaN(numTrigger) || numTrigger < 0) {
+      return res.status(400).json({
+        error: 'Bad Request',
+        message: 'trigger_price must be a valid non-negative number.'
+      });
+    }
+  }
+
+  if ((order_type === 'SL' || order_type === 'SL-M') && (!trigger_price || Number(trigger_price) <= 0)) {
+    return res.status(400).json({
+      error: 'Bad Request',
+      message: `trigger_price > 0 is required for order_type '${order_type}'.`
+    });
+  }
+
+  return next();
+};
+
 /**
  * GET /market/quotes
  * Proxies market quote requests to Upstox API v2 over HTTPS.
@@ -50,7 +191,6 @@ router.get('/quotes', verifyToken, checkSubscription, async (req, res) => {
       });
     }
 
-    // Strictly enforce HTTPS for external broker API calls
     const upstoxResponse = await axios.get('https://api.upstox.com/v2/market-quote/quotes', {
       params: { instrument_key: targetKey },
       headers: {
@@ -67,16 +207,15 @@ router.get('/quotes', verifyToken, checkSubscription, async (req, res) => {
     });
 
   } catch (error) {
-    // Sanitized Error Logging: Prevent leaking full Axios error object or request headers (which contain Bearer token)
     const statusCode = error.response?.status || 500;
     const upstoxErrorMessage = error.response?.data?.errors?.[0]?.message || 'Failed to fetch market quotes from broker.';
-    
+
     console.error('Market Proxy Request Failed:', {
       status: statusCode,
       instrument: targetKey,
       message: error.message
     });
-    
+
     return res.status(statusCode).json({
       error: 'Broker Proxy Error',
       message: upstoxErrorMessage
@@ -87,9 +226,9 @@ router.get('/quotes', verifyToken, checkSubscription, async (req, res) => {
 /**
  * POST /market/order
  * Proxies order placement requests to Upstox API v2 HFT engine over HTTPS.
- * Requires: verifyToken, checkSubscription
+ * Requires: verifyToken, checkSubscription, validateUpstoxOrder
  */
-router.post('/order', verifyToken, checkSubscription, async (req, res) => {
+router.post('/order', verifyToken, checkSubscription, validateUpstoxOrder, async (req, res) => {
   const {
     quantity,
     product,
@@ -103,13 +242,6 @@ router.post('/order', verifyToken, checkSubscription, async (req, res) => {
     is_amo
   } = req.body;
 
-  if (!quantity || !product || !validity || !instrument_token || !order_type || !transaction_type) {
-    return res.status(400).json({
-      error: 'Bad Request',
-      message: 'Missing required Upstox order fields (quantity, product, validity, instrument_token, order_type, transaction_type).'
-    });
-  }
-
   try {
     const upstoxToken = await getUserUpstoxToken(req.user.uid);
 
@@ -122,10 +254,10 @@ router.post('/order', verifyToken, checkSubscription, async (req, res) => {
         status: 'COMPLETE',
         details: {
           instrument_token,
-          quantity,
+          quantity: Number(quantity),
           transaction_type,
           order_type,
-          price: price || 0,
+          price: Number(price || 0),
           executedAt: new Date().toISOString()
         }
       });
@@ -145,7 +277,6 @@ router.post('/order', verifyToken, checkSubscription, async (req, res) => {
       is_amo: Boolean(is_amo || false)
     };
 
-    // Strictly enforce HTTPS for HFT order placement
     const upstoxResponse = await axios.post('https://api-hft.upstox.com/v2/order/place', payload, {
       headers: {
         'Content-Type': 'application/json',
@@ -162,7 +293,6 @@ router.post('/order', verifyToken, checkSubscription, async (req, res) => {
     });
 
   } catch (error) {
-    // Sanitized Error Logging: Prevent leaking full Axios error object or request headers
     const statusCode = error.response?.status || 500;
     const upstoxErrorMessage = error.response?.data?.errors?.[0]?.message || 'Failed to place order with broker.';
 

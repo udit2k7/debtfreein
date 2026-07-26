@@ -1,8 +1,25 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /users/{userId}/{document=**} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
+
+    // Lock down BYOK Vault completely from client-side access.
+    // Clients CANNOT read/write broker tokens directly; they MUST use the API Gateway.
+    match /users/{userId}/vault/{document=**} {
+      allow read, write: if false;
+    }
+
+    // User Profile Document:
+    // - Authenticated users can READ their own profile context.
+    // - Users CANNOT WRITE to their profile (prevents client-side tampering of status or subscription_expiry_date).
+    // - All profile updates/approvals must go through the API Gateway Admin SDK.
+    match /users/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if false;
+    }
+
+    // Default deny for all unspecified paths
+    match /{document=**} {
+      allow read, write: if false;
     }
   }
 }

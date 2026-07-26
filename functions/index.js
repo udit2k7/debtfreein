@@ -2,6 +2,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const express = require('express');
 const cors = require('cors');
+const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 // Initialize Firebase Admin SDK
@@ -10,6 +11,21 @@ if (!admin.apps.length) {
 }
 
 const app = express();
+
+// Rate Limiting Policy: Limit to 60 requests per minute per IP to defend against DDoS and protect broker API keys
+const apiLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 60, // Maximum 60 requests per IP per minute
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    error: 'Too Many Requests',
+    message: 'API rate limit exceeded. Maximum 60 requests per minute allowed.'
+  }
+});
+
+// Apply rate limiter
+app.use(apiLimiter);
 
 // Allowed Origins for CORS (Production Frontend Domain & Local Dev Environments)
 const ALLOWED_ORIGINS = [

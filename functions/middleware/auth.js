@@ -27,7 +27,6 @@ const verifyToken = async (req, res, next) => {
     req.user = decodedToken;
     return next();
   } catch (error) {
-    // Log exception internally without leaking internal stack traces or Firebase internals to client
     console.error('Authentication verification failure:', error.code || error.message);
     return res.status(401).json({
       error: 'Unauthorized',
@@ -39,7 +38,10 @@ const verifyToken = async (req, res, next) => {
 /**
  * Middleware to check user's subscription status in Firestore.
  * Requires verifyToken to have attached req.user.
- * Rejects with 403 if status !== 'active' or subscription_expiry_date < Date.now()
+ * Edge cases handled:
+ * - User document missing -> 403 Forbidden
+ * - Missing/null/invalid subscription_expiry_date -> 403 Forbidden
+ * - Clock skew tolerance: 60-second grace window on Date.now() comparison
  */
 const checkSubscription = async (req, res, next) => {
   if (!req.user || !req.user.uid) {
@@ -61,12 +63,27 @@ const checkSubscription = async (req, res, next) => {
     }
 
     const userData = userDoc.data();
+    if (!userData) {
+      return res.status(403).json({
+        error: 'Forbidden',
+        message: 'User record data is empty.'
+      });
+    }
+
     const { status, subscription_expiry_date } = userData;
 
     if (status !== 'active') {
       return res.status(403).json({
         error: 'Forbidden',
         message: 'Subscription is not active.'
+      });
+    }
+
+    // Safely check for missing or null subscription_expiry_date
+    if (subscription_expiry_date === undefined || subscription_expiry_date === null) {
+      return res.status(403).json({
+        error: 'Forbidden',
+        message: 'Subscription expiry date is unconfigured or invalid.'
       });
     }
 
@@ -80,7 +97,16 @@ const checkSubscription = async (req, res, next) => {
       expiryMs = new Date(subscription_expiry_date).getTime();
     }
 
-    if (!expiryMs || expiryMs < Date.now()) {
+    if (!expiryMs || isNaN(expiryMs)) {
+      return res.status(403).json({
+        error: 'Forbidden',
+        message: 'Invalid subscription expiry date format.'
+      });
+    }
+
+    // Allow a 60-second grace window to account for server clock / NTP skew
+    const CLOCK_SKEW_GRACE_MS = 60 * 1000;
+    if (expiryMs < (Date.now() - CLOCK_SKEW_GRACE_MS)) {
       return res.status(403).json({
         error: 'Forbidden',
         message: 'Subscription has expired.'
