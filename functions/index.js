@@ -21,10 +21,12 @@ app.use(express.urlencoded({ extended: true }));
 // Import routes
 const adminRoutes = require('./routes/admin');
 const marketRoutes = require('./routes/market');
+const vaultRoutes = require('./routes/vault');
 
 // Mount routes
 app.use('/admin', adminRoutes);
 app.use('/market', marketRoutes);
+app.use('/vault', vaultRoutes);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
@@ -42,7 +44,8 @@ app.get('/', (req, res) => {
     endpoints: {
       health: '/health',
       admin: '/admin/*',
-      market: '/market/*'
+      market: '/market/*',
+      vault: '/vault/*'
     }
   });
 });
