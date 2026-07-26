@@ -20,3 +20,9 @@ app/google-services.json
 # Build Artifacts
 *.apk
 *.aab
+
+# Keystore & Signing Secrets
+*.jks
+*.keystore
+keystore.properties
+app/keystore.properties

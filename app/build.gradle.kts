@@ -28,6 +28,16 @@ if (localPropertiesFile.exists()) {
 
 val geminiApiKey = localProperties.getProperty("GEMINI_API_KEY") ?: "\"YOUR_KEY_HERE\""
 
+// Script block to read keystore.properties if present
+val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("keystore.properties").let {
+    if (it.exists()) it else file("keystore.properties")
+}
+val hasKeystoreProperties = keystorePropertiesFile.exists()
+if (hasKeystoreProperties) {
+    keystorePropertiesFile.inputStream().use { keystoreProperties.load(it) }
+}
+
 android {
     namespace = "com.debtfreein.app"
     compileSdk = 35
@@ -36,8 +46,8 @@ android {
         applicationId = "com.udittandon.debtfree"
         minSdk = 26
         targetSdk = 35
-        versionCode = 8
-        versionName = semanticVersionName
+        versionCode = 1
+        versionName = "1.0.0-alpha"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -45,6 +55,17 @@ android {
         }
 
         buildConfigField("String", "GEMINI_API_KEY", geminiApiKey)
+    }
+
+    signingConfigs {
+        if (hasKeystoreProperties) {
+            create("release") {
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
+                storeFile = keystoreProperties.getProperty("storeFile")?.let { file(it) }
+                storePassword = keystoreProperties.getProperty("storePassword")
+            }
+        }
     }
 
     buildTypes {
@@ -55,6 +76,11 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = if (hasKeystoreProperties) {
+                signingConfigs.getByName("release")
+            } else {
+                signingConfigs.getByName("debug")
+            }
         }
     }
 
