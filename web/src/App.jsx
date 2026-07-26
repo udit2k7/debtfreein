@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import AdminRoute from './components/AdminRoute';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -12,6 +13,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Settings from './pages/Settings';
+import Admin from './pages/Admin';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -55,6 +57,16 @@ export default function App() {
                   <ProtectedRoute>
                     <Settings />
                   </ProtectedRoute>
+                }
+              />
+
+              {/* Admin Protected Route */}
+              <Route
+                path="/admin"
+                element={
+                  <AdminRoute>
+                    <Admin />
+                  </AdminRoute>
                 }
               />
             </Routes>
