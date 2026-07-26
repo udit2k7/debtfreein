@@ -7,8 +7,8 @@ export default function Settings() {
   const { currentUser } = useAuth();
   const [broker, setBroker] = useState('upstox');
   const [accessToken, setAccessToken] = useState('');
-  const [apiKey, setApiKey] = useState(localStorage.getItem('byok_api_key') || '');
-  const [apiSecret, setApiSecret] = useState(localStorage.getItem('byok_api_secret') || '');
+  const [apiKey, setApiKey] = useState('');
+  const [apiSecret, setApiSecret] = useState('');
   const [tierMode, setTierMode] = useState('byok');
   
   const [loading, setLoading] = useState(false);
@@ -37,9 +37,14 @@ export default function Settings() {
 
   const handleSaveKeys = async (e) => {
     e.preventDefault();
+    if (loading) return; // Prevent double submission
     setStatusMessage(null);
 
-    const tokenToSave = accessToken.trim() || apiKey.trim();
+    const cleanToken = accessToken.trim();
+    const cleanApiKey = apiKey.trim();
+    const cleanApiSecret = apiSecret.trim();
+
+    const tokenToSave = cleanToken || cleanApiKey;
     if (!tokenToSave) {
       setStatusMessage({
         type: 'error',
@@ -50,16 +55,15 @@ export default function Settings() {
 
     setLoading(true);
     try {
-      // Hit POST /vault/upstox via central API utility
+      // Submit credentials directly to cloud vault endpoint over HTTPS
       await api.post('/vault/upstox', {
         accessToken: tokenToSave,
-        apiKey: apiKey.trim() || null,
-        apiSecret: apiSecret.trim() || null,
+        apiKey: cleanApiKey || null,
+        apiSecret: cleanApiSecret || null,
         broker
       });
 
-      // Save local preferences
-      localStorage.setItem('byok_api_key', apiKey);
+      // Save non-sensitive UI preference flags only
       localStorage.setItem('byok_broker', broker);
       localStorage.setItem('byok_tier', tierMode);
 
@@ -69,6 +73,8 @@ export default function Settings() {
       });
 
       setAccessToken('');
+      setApiKey('');
+      setApiSecret('');
       await fetchVaultStatus();
     } catch (error) {
       console.error('Error saving credentials to vault:', error);
@@ -125,7 +131,7 @@ export default function Settings() {
             <button
               onClick={fetchVaultStatus}
               disabled={fetchingVault}
-              className="text-xs text-brand-accent hover:underline flex items-center gap-1 font-mono"
+              className="text-xs text-brand-accent hover:underline flex items-center gap-1 font-mono disabled:opacity-50"
             >
               <RefreshCw className={`w-3 h-3 ${fetchingVault ? 'animate-spin' : ''}`} />
               <span>Refresh Vault</span>

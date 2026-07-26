@@ -13,10 +13,18 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return; // Debounce submission
     setError('');
+    
+    const cleanEmail = email.trim();
+    if (!cleanEmail) {
+      setError('Please provide a valid email address.');
+      return;
+    }
+
     setLoading(true);
     try {
-      await login(email, password);
+      await login(cleanEmail, password);
       navigate('/dashboard');
     } catch (err) {
       setError(err.message || 'Failed to sign in. Please check your credentials.');
@@ -26,6 +34,7 @@ export default function Login() {
   };
 
   const handleGoogleSignIn = async () => {
+    if (loading) return;
     setError('');
     setLoading(true);
     try {
@@ -51,7 +60,7 @@ export default function Login() {
               Access SaaS Portal
             </h1>
             <p className="text-xs text-brand-textLight dark:text-brand-textDark">
-              Sign in to manage your quantitative trading dashboard & BYOK vault
+              Sign in to manage your quantitative trading dashboard &amp; BYOK vault
             </p>
           </div>
 

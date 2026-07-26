@@ -14,13 +14,23 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return; // Debounce submission
+    
     if (password !== confirmPassword) {
       return setError('Passwords do not match.');
     }
+    
     setError('');
+
+    const cleanEmail = email.trim();
+    if (!cleanEmail) {
+      setError('Please provide a valid email address.');
+      return;
+    }
+
     setLoading(true);
     try {
-      await register(email, password);
+      await register(cleanEmail, password);
       navigate('/dashboard');
     } catch (err) {
       setError(err.message || 'Failed to create account.');
@@ -30,6 +40,7 @@ export default function Register() {
   };
 
   const handleGoogleSignIn = async () => {
+    if (loading) return;
     setError('');
     setLoading(true);
     try {
@@ -55,7 +66,7 @@ export default function Register() {
               Create Trader Account
             </h1>
             <p className="text-xs text-brand-textLight dark:text-brand-textDark">
-              Unlock paper trading simulations & quantitative signals
+              Unlock paper trading simulations &amp; quantitative signals
             </p>
           </div>
 
