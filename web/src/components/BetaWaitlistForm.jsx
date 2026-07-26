@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from '../config/firebase';
+import { db } from '../lib/firebase';
 
 export default function BetaWaitlistForm() {
   const [email, setEmail] = useState('');
@@ -28,7 +28,7 @@ export default function BetaWaitlistForm() {
   };
 
   return (
-    <div id="access" class="bg-brand-cardLight dark:bg-brand-cardDark border border-black/5 dark:border-white/10 rounded-2xl p-8 text-center space-y-6 shadow-sm">
+    <div id="access" className="bg-brand-cardLight dark:bg-brand-cardDark border border-black/5 dark:border-white/10 rounded-2xl p-8 text-center space-y-6 shadow-sm">
       <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-headingLight dark:text-brand-headingDark">
         Get Beta Access to Quant Signals
       </h3>
