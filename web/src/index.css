@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .console-line {
+    @apply py-0.5 border-b border-white/5 font-mono text-[11px];
+  }
+  .console-line .ts {
+    @apply text-gray-500 mr-1;
+  }
+  .console-line .tag {
+    @apply text-brand-accent font-bold mr-1;
+  }
+}
